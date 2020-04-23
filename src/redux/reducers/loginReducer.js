@@ -30,6 +30,10 @@ export default function(state = initialState, action) {
           isAuth: action.payload.isAuth,
           token: action.payload.token
         }
+        case USER_LOGOUT:
+            return {
+              state: initialState
+            }
         default:
             return state
     }
