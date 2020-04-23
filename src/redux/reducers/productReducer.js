@@ -30,6 +30,27 @@ export default function ( state = initialState, action) {
             filteredItems: action.payload,
             adminActions: false
         }
+        case ADD_PRODUCT_PENDING:
+        return {
+            ...state,
+            isLoading: true
+        }
+        case ADD_PRODUCT_SUCCESS: {
+        const newProduct = action.payload.product.data
+        const products = [...state.items, newProduct]
+            return {
+                ...state,
+                isLoading: false,
+                items: products
+            }
+        }
+        case ADD_PRODUCT_ERROR:
+        return {
+            ...state,
+            isLoading: false,
+            error: action.error,
+            message: action.payload.message
+        }
         default:
         return state
     }
