@@ -102,3 +102,43 @@ export const deleteProduct = code => {
         })
     }
 }
+
+// UPDATE PRODUCTS
+export const updateProduct = product => {
+    console.log(product)
+    return dispatch => {
+      dispatch({
+        type: UPDATE_PRODUCT_PENDING
+      })
+      const {
+        users: { token }
+      } = store.getState()
+      const options = {
+        timeout: 25000,
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `BEARER ${token}`
+        },
+        body: JSON.stringify({ ...product })
+      }
+      return fetch(`http://localhost:5000/api/products/${product._id}`, options)
+        .then(res => res.json())
+        .then(data => {
+          console.log('UPDATE PRODUCT', data)
+          if (!Object.entries(data).length) {
+            return Promise.reject(data)
+          }
+          return dispatch({
+            type: UPDATE_PRODUCT_SUCCESS,
+            payload: product
+          })
+        })
+        .catch(error => {
+          return dispatch({
+            type: UPDATE_PRODUCT_ERROR,
+            payload: error
+          })
+        })
+    }
+}
