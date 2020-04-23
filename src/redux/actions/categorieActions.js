@@ -59,3 +59,41 @@ export const postCategories = categorie => {
             })
     }
 }
+
+// DELETE THE CATEGORIES
+export const deleteCategorie = code => {
+    return dispatch => {
+      dispatch({
+        type: DELETE_CATEGORIE_PENDING
+      })
+      const {
+        users: { token }
+      } = store.getState()
+      const options = {
+        timeout: 25000,
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `BEARER ${token}`
+        }
+      }
+      return fetch(`http://localhost:5000/api/categories/${code}`, options)
+        .then(res => res.json())
+        .then(data => {
+          console.log('DELETE CATEGORIE', data)
+          if (!Object.entries(data).length) {
+            return Promise.reject(data)
+          }
+          return dispatch({
+            type: DELETE_CATEGORIE_SUCCESS,
+            payload: data
+          })
+        })
+        .catch(error => {
+          return dispatch({
+            type: DELETE_CATEGORIE_ERROR,
+            payload: error
+          })
+        })
+    }
+}
