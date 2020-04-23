@@ -152,3 +152,29 @@ export const setProductOnForm = _id => {
       })
     }
 }
+
+//SORT PRODUCTS BY PRICE
+export const sortProducts = (products, sort) => dispatch => {
+    const newProduct = [...products]
+    console.log(newProduct)
+    if (sort !== '') {
+      newProduct.sort((a, b) =>
+        sort === 'lowestprice'
+          ? a.price > b.price
+            ? 1
+            : -1
+          : a.price < b.price
+          ? 1
+          : -1
+      )
+    } else {
+      newProduct.sort((a, b) => (a.id > b.id ? 1 : -1))
+    }
+    return dispatch({
+      type: ORDER_PRODUCTS_BY_PRICE,
+      payload: {
+        sort: sort,
+        items: newProduct
+      }
+    })
+  }
