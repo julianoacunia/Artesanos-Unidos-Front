@@ -64,3 +64,41 @@ export const postProduct = product => {
             })
     }
 }
+
+// DELETE THE PRODUCTS
+export const deleteProduct = code => {
+    return dispatch => {
+      dispatch({
+        type: DELETE_PRODUCT_PENDING
+      })
+      const {
+        users: { token }
+      } = store.getState()
+      const options = {
+        timeout: 25000,
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `BEARER ${token}`
+        }
+      }
+      return fetch(`http://localhost:5000/api/products/${code}`, options)
+        .then(res => res.json())
+        .then(data => {
+          console.log('DELETE PRODUCT', data)
+          if (!Object.entries(data).length) {
+            return Promise.reject(data)
+          }
+          return dispatch({
+            type: DELETE_PRODUCT_SUCCESS,
+            payload: data
+          })
+        })
+        .catch(error => {
+          return dispatch({
+            type: DELETE_PRODUCT_ERROR,
+            payload: error
+          })
+        })
+    }
+}
