@@ -98,6 +98,12 @@ export default function ( state = initialState, action) {
             isLoading: false,
             message: action.payload.message
         }
+        case SET_SELECTED_PRODUCT_ID: {
+            return {
+              ...state,
+              productSelected: action.payload
+            }
+        }
         default:
         return state
     }
