@@ -27,3 +27,6 @@ export const ADD_USER_ERROR = 'ADD_USER_ERROR'
 export const USER_LOGOUT = 'USER_LOGOUT'
 export const FETCH_USERS = 'FETCH_USERS'
 export const IS_AUTH = 'IS_AUTH'
+
+// CATEGORIE TYPE ACTIONS
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
