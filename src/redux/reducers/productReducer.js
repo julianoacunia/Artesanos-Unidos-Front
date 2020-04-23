@@ -75,6 +75,29 @@ export default function ( state = initialState, action) {
             isLoading: false,
             message: action.payload.message
         }
+        case DELETE_PRODUCT_PENDING:
+        return {
+            ...state,
+            isLoading: true
+        }
+        case DELETE_PRODUCT_SUCCESS:
+        console.log(action.payload)
+        const newProducts = [...state.items]
+        const productToDelete = newProducts.findIndex(
+            ele => ele._id === action.payload._id
+        )
+        newProducts.splice(productToDelete, 1)
+        return {
+            ...state,
+            isLoading: false,
+            items: newProducts
+        }
+        case DELETE_PRODUCT_ERROR:
+        return {
+            ...state,
+            isLoading: false,
+            message: action.payload.message
+        }
         default:
         return state
     }
