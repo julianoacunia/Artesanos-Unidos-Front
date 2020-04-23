@@ -60,6 +60,27 @@ export default function(state = initialState, action) {
           ...state,
           users: action.payload
         }
+        case ADD_USER_PENDING:
+        return {
+          ...state,
+          isLoading: true
+        }
+        case ADD_USER_SUCCESS: {
+            const newUser = action.payload.user
+            const user = [...state.users, newUser]
+            return {
+              ...state,
+              isLoading: false,
+              users: user
+            }
+        }
+        case ADD_USER_ERROR:
+        return {
+          ...state,
+          isLoading: false,
+          error: action.error,
+          message: action.payload.message
+        }
         default:
             return state
     }
