@@ -53,3 +53,11 @@ export const isAuth = isAuth => {
       payload: isAuth
     }
 }
+
+//LOGOUT
+export const logOut = dispatch => {
+    return {
+      type: USER_LOGOUT
+    }
+}
+
