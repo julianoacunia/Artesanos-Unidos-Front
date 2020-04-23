@@ -142,3 +142,13 @@ export const updateProduct = product => {
         })
     }
 }
+
+//SET PRODUCT
+export const setProductOnForm = _id => {
+    return dispatch => {
+      dispatch({
+        type: SET_SELECTED_PRODUCT_ID,
+        payload: _id
+      })
+    }
+}
