@@ -1,25 +1,17 @@
-import React from 'react';
+import './App.css'
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import Routes from './routes/view'
 
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Routes />
+      </Provider>
+    )
+  }
 }
+export default App
 
-export default App;
