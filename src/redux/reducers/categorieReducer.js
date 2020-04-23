@@ -44,6 +44,29 @@ export default function ( state = initialState, action) {
             error: action.error,
             message: action.payload.message
         }
+        case DELETE_CATEGORIE_PENDING:
+        return {
+            ...state,
+            isLoading: true
+        }
+        case DELETE_CATEGORIE_SUCCESS:
+        console.log(action.payload)
+        const newCategorie = [...state.items]
+        const categorieToDelete = newCategorie.findIndex(
+            ele => ele._id === action.payload._id
+        )
+        newCategorie.splice(categorieToDelete, 1)
+        return {
+            ...state,
+            isLoading: false,
+            items: newCategorie
+        }
+        case DELETE_CATEGORIE_ERROR:
+        return {
+            ...state,
+            isLoading: false,
+            message: action.payload.message
+        }
         default:
         return state
     }
