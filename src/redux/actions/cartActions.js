@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, IS_AUTH } from './types'
+import { ADD_TO_CART, REMOVE_FROM_CART } from './types'
 
 // ADD TO CART METHOD
 export const addToCart = (items, product) => dispatch => {
@@ -21,3 +21,16 @@ export const addToCart = (items, product) => dispatch => {
       }
     })
 }
+
+//REMOVE FROM CART METHOD
+export const removeFromCart = (items, product) => dispatch => {
+    const cartItems = items.slice().filter(a => a._id !== product._id)
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    return dispatch({
+      type: REMOVE_FROM_CART,
+      payload: {
+        cartItems
+      }
+    })
+}
+  
