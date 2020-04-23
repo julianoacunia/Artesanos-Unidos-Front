@@ -61,3 +61,12 @@ export const logOut = dispatch => {
     }
 }
 
+// FETCH USERS
+export const fetchUser = () => dispatch => {
+    fetch('http://localhost:5000/api/users/')
+      .then(res => res.json())
+      .then(data => {
+        return dispatch({ type: FETCH_USERS, payload: data })
+    })
+}
+
