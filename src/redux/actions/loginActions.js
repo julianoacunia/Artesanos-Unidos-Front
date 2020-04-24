@@ -23,7 +23,7 @@ export const loginAccount = data => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: document.getElementById('inputName').value,
+          email: document.getElementById('inputEmail').value,
           password: document.getElementById('inputPassword').value
         })
       }

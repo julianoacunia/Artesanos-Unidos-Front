@@ -1,16 +1,3 @@
-.wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-h2 {
-    text-align: center;
-    color: white;
-}
-.container-back-to-login{
-    display: flex;
-    width: 100%;
-}
 #inputUser {
     margin: 5px;
     width: 325px;
@@ -32,7 +19,7 @@ h2 {
     font-size: 18px;
 }
 
-#inputAddress {
+#inputLastName {
     margin: 5px;
     width: 325px;
     font-weight: bolder;
@@ -40,7 +27,7 @@ h2 {
 }
 
 #submitButton {
-    background-color: #17a2b8;
+    background-color: #a31919;
     color: #fff;
     border: 1px solid transparent;
     margin: 2px;
@@ -48,52 +35,4 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
-}
-
-#container-back-to-login {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: #1991a3;;
-}
-.back-to-login-div1{
-    width: 50%;
-    height: 50px;
-}
-.back-to-login-button {
-    display: flex;
-    align-items: center;
-    width: 40%;
-    height: 50px;
-}
-.back-to-login-button:hover {
-    background-color: #34b6ca;
-}
-.back-to-catalog-button {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 40%;
-    height: 50px;
-}
-.back-to-catalog-button:hover {
-    background-color: #34b6ca;
-}
-.back-to-catalog-div1 {
-    display: flex;
-    justify-content: flex-end;
-    width: 50%;
-    height: 50px;
-}
-#back-to-login-link {
-    text-decoration: none;
-    color: #fff;
-    margin-left: 18px;
-}
-#back-to-catalog-link {
-    text-decoration: none;
-    color: #fff;
-    margin-left: 550px;
 }

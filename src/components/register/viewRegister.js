@@ -45,7 +45,7 @@ class register extends Component {
         </div>
         <div className='register-container'>
           <Formik
-            initialValues={{ name: '', email: '', password: '', address: '' }}
+            initialValues={{ name: '', lastName: '', email: '', password: ''}}
             onSubmit={values => {
               this.props.postUser(values)
             }}
@@ -69,6 +69,12 @@ class register extends Component {
                 />
                 <Field
                   type='text'
+                  name='lastName'
+                  id='inputLastName'
+                  placeholder='lastName'
+                />
+                 <Field
+                  type='text'
                   name='email'
                   id='inputEmail'
                   placeholder='email'
@@ -78,12 +84,6 @@ class register extends Component {
                   name='password'
                   id='inputPassword'
                   placeholder='password'
-                />
-                <Field
-                  type='text'
-                  name='address'
-                  id='inputAddress'
-                  placeholder='address'
                 />
                 <button id='submitButton' type='submit'>
                   Submit

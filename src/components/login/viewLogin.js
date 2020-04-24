@@ -60,7 +60,7 @@ class login extends Component {
           </div>
         </div>
         <Formik
-          initialValues={{ name: '', password: '' }}
+          initialValues={{ email: '', password: '' }}
           onSubmit={this.getLogin}
         >
           {({ handleSubmit }) => (
@@ -72,9 +72,9 @@ class login extends Component {
                 <div id='login'>
                   <Field
                     type='text'
-                    id='inputName'
-                    name='name'
-                    placeholder='name'
+                    id='inputEmail'
+                    name='email'
+                    placeholder='email'
                   />
                   <Field
                     type='password'
