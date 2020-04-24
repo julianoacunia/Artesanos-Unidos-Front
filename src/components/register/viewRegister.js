@@ -1,4 +1,4 @@
-import '../styles/register.css'
+import '../../styles/register.css'
 import React, { Component } from 'react'
 import { Formik, Form, Field } from 'formik'
 import { Link } from 'react-router-dom'
