@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import Product from './publicProduct'
 
-class viewProducts extends Component {
+class viewPublicProduct extends Component {
     render() {
         return (
             <div className='container'>
@@ -63,5 +63,5 @@ const mapDispatchToProps = dispatch => {
     return bindActionCreators({}, dispatch)
 }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(viewProducts)
+  export default connect(mapStateToProps, mapDispatchToProps)(viewPublicProduct)
   

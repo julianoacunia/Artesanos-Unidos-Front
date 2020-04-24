@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { isAuth, logOut } from '../../redux/actions/loginActions'
 import { fetchCategories } from '../../redux/actions/categorieActions'
 
-class home extends Component {
+class privateHome extends Component {
   capturarDatos() {
     const productToUpdate = this.props.products.find(
       product => product._id === this.props.productSelected
@@ -95,4 +95,4 @@ const mapDispatchToProps = dispatch => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(home)
+export default connect(mapStateToProps, mapDispatchToProps)(privateHome)
