@@ -19,7 +19,7 @@ class login extends Component {
     this.props.loginAccount(values).then(response => {
       console.log(response)
       if (this.props.isAuth) {
-        this.props.history.push('/home')
+        this.props.history.push('/privateHome')
       }
     })
   }
