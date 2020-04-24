@@ -38,10 +38,10 @@ class privateHome extends Component {
         <div className='logged'>
           <div className='options'>
             <div className='homeMenu'>
-              <Link to='home'>Home</Link>
+              <Link to='/privateHome'>Home</Link>
             </div>
             <div className='productMenu'>
-              <Link to='/productPrivate'>Product</Link>
+              <Link to='/privateProduct'>Product</Link>
             </div>
             <div className='categorieMenu'>
               <Link to='categoriePrivate'>Categorie</Link>

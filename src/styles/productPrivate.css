@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.tittle {
+    text-align: center;
+    background-color: #17a2b8;
+    color: #fff;
+    width: 100%;
+}
