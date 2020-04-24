@@ -8,8 +8,14 @@ class publicHome extends Component {
   render() {
     return (
       <div className='container'>
-        <div className='tittle'>
-          <h1>E-commerce-Acuña</h1>
+        <div className='header'>
+          <div className='title'>
+            <h1>Artesanos Unidos</h1>
+          </div>
+          <div className='publicity'>
+            <div className='publicity-mr'>
+            </div>
+          </div>
         </div>
         <div className='logged'>
           <div className='options'>
@@ -17,7 +23,7 @@ class publicHome extends Component {
               <Link to='home'>Home</Link>
             </div>
             <div className='productMenu'>
-              <Link to='/product'>Product</Link>
+              <Link to='/publicProduct'>Product</Link>
             </div>
             <div className='categorieMenu'>
               <Link to='/categorie'>Categorie</Link>
