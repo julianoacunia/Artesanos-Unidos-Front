@@ -1,4 +1,3 @@
-import '../../styles/productPrivate.css'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -10,9 +9,15 @@ class viewProductPrivate extends Component {
     render() {
         return (
             <div className='container'>
-                <div className='tittle'>
-                    <h1>E-commerce-Acuña</h1>
-                </div>
+        <div className='header'>
+          <div className='title'>
+            <h1>Artesanos Unidos</h1>
+          </div>
+          <div className='publicity'>
+            <div className='publicity-mr'>
+            </div>
+          </div>
+        </div>
                 {this.props.isAuth ? (
                     <div className='logged'>
                         <div className='options'>
