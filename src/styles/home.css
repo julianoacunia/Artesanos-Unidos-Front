@@ -140,10 +140,6 @@ a {
     text-decoration: none;
     color: #fff;
 }
-.col-md-8 {
-    flex: 0 0 66.6666666667%;
-    max-width: 66.6666666667%;
-}
 .adminsession {
     display: flex;
     align-items: center;
@@ -152,14 +148,14 @@ a {
     font-weight: bold;
 }
 
-.col-md-4 {
-   flex: 0 0 33.3333333333%;
-   max-width: 33.3333333333%;
-}
 .menu {
     display: flex;
     flex-direction: row;
 }
 .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-top: 5px;
+    width: 100%;
 }
