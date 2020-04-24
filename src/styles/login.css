@@ -7,7 +7,7 @@
 }
 .tittle-login{
     text-align: center;
-    background-color:#17a2b8;
+    background-color:#da0707;
     color: #ffffff;
     width: 100%;
 }
@@ -65,7 +65,7 @@
 }
 
 #buttonCreateAccount {
-    background-color: #17a2b8;
+    background-color: #a31919;
     color: #fff;
     border: 1px solid transparent;
     margin: 2px;
@@ -76,7 +76,7 @@
 
 }
 .buttonLogin {
-    background-color: #17a2b8;
+    background-color: #a31919;
     color: #fff;
     border: 1px solid transparent;
     margin: 2px;

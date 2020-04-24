@@ -20,7 +20,7 @@ class publicHome extends Component {
         <div className='logged'>
           <div className='options'>
             <div className='homeMenu'>
-              <Link to='home'>Home</Link>
+              <Link to='/publicHome'>Home</Link>
             </div>
             <div className='productMenu'>
               <Link to='/publicProduct'>Product</Link>
