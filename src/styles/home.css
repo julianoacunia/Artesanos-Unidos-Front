@@ -63,21 +63,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    width: 12%;
     height: 50px;
 }
 .categorieMenu {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 12%;
+    width: 13%;
     height: 50px;
 }
 .basketMenu {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    width: 50px;
     height: 50px;
 }
 .registerMenu {
@@ -130,6 +130,12 @@
     border: 0 solid transparent;
     border-radius: 0.25rem;
 }
+.my-product{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    margin-left: 15px;
+}
 .buttonmenu { 
     display: flex;
     align-items: center;
@@ -144,7 +150,7 @@ a {
     display: flex;
     align-items: center;
     color: #fff;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
 }
 

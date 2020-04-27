@@ -2,26 +2,13 @@ import '../../styles/home.css'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { postProduct, updateProduct } from '../../redux/actions/productActions'
+import { Formik, Form, Field } from 'formik'
+import { postProduct, fetchProducts } from '../../redux/actions/productActions'
 import { Link } from 'react-router-dom'
 import { isAuth, logOut } from '../../redux/actions/loginActions'
-import { fetchCategories } from '../../redux/actions/categorieActions'
 
-class privateHome extends Component {
-  capturarDatos() {
-    const productToUpdate = this.props.products.find(
-      product => product._id === this.props.productSelected
-    )
-    return {
-      tittle: productToUpdate.tittle,
-      description: productToUpdate.description,
-      availableSize: productToUpdate.availableSize,
-      price: productToUpdate.price
-    }
-  }
-  componentDidMount(){
-    this.props.fetchCategories()
-  }
+
+class formProduct extends Component {
   render() {
     return (
       <div className='container'>
@@ -72,7 +59,40 @@ class privateHome extends Component {
         )}
         <hr />
         <div className='row'>
-          <div className='categoriesPrivate'>
+        <div className='form-add'>
+            <h4>Agregar nuevo producto</h4>
+            <div className='form-container'>
+              <Formik
+                initialValues={{
+                  id: '',
+                  photo: 'https://via.placeholder.com/150',
+                  tittle: '',
+                  description: '',
+                  price: 0,
+                  stock: 0,
+                  img:''
+                }}
+                onSubmit={values => {
+                  this.props.postProduct(values)
+                  this.props.fetchProducts()
+                }}
+              >
+                {({ values,handleSubmit }) => (
+                  <Form 
+                    onSubmit={handleSubmit}
+                    style={{ display: 'flex', flexDirection: 'column'}}>
+                    <Field type='text' name='id' placeholder='Codigo' />
+                    <Field type='text' name='tittle' placeholder='Titulo'/>
+                    <Field type='text' name='description' placeholder='Descripción'/>
+                    <Field type='number' name='price' placeholder='Precio' />
+                    <Field type='number' name='stock' placeholder='Stock' />
+                    <Field type='text' name='img' placeholder='Imagen' />
+                    <button id='btn-form' type='submit'>Submit</button>
+                <pre>{JSON.stringify(values, null, 2)}</pre>
+                  </Form>
+                )}
+              </Formik>
+            </div>
           </div>
         </div>
       </div>
@@ -83,7 +103,6 @@ class privateHome extends Component {
 const mapStateToProps = state => {
   return {
     products: state.products.items,
-    categories: state.categories.items,
     name: state.users.user,
     isLoading: state.isLoading,
     isAuth: state.isAuth,
@@ -93,9 +112,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { postProduct, updateProduct, isAuth, logOut, fetchCategories },
+    { postProduct, isAuth, logOut, fetchProducts },
     dispatch
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(privateHome)
+export default connect(mapStateToProps, mapDispatchToProps)(formProduct)

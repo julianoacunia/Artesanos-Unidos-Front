@@ -45,49 +45,29 @@ class register extends Component {
         </div>
         <div className='register-container'>
           <Formik
-            initialValues={{ name: '', lastName: '', email: '', password: ''}}
+            initialValues={{ name: '', lastName: '', email: '', password: '', isAdmin: ''}}
             onSubmit={values => {
               this.props.postUser(values)
             }}
           >
-            {({ handleSubmit }) => (
-              <Form
-                onSubmit={handleSubmit}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginTop: '20px'
+            {({ values, handleSubmit }) => (
+              <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '20px'
                 }}
               >
-                <Field
-                  type='text'
-                  name='name'
-                  id='inputUser'
-                  placeholder='name'
-                />
-                <Field
-                  type='text'
-                  name='lastName'
-                  id='inputLastName'
-                  placeholder='lastName'
-                />
-                 <Field
-                  type='text'
-                  name='email'
-                  id='inputEmail'
-                  placeholder='email'
-                />
-                <Field
-                  type='password'
-                  name='password'
-                  id='inputPassword'
-                  placeholder='password'
-                />
-                <button id='submitButton' type='submit'>
-                  Submit
-                </button>
+                <label>Nombre:</label>
+                <Field type='text' name='name' id='inputUser' placeholder='Ingresa tu nombre'/>
+                <label>Apellido:</label>
+                <Field type='text' name='lastName' id='inputLastName' placeholder='Ingresa tu apellido'/>
+                <label>Email:</label>
+                <Field type='text' name='email' id='inputEmail' placeholder='ejemplo@hotmail.com'/>
+                <label>Contraseña:</label>
+                <Field type='password' name='password' id='inputPassword' placeholder='password'/>
+                <label>Proveedor:</label>
+                <Field type= 'radio'name='isAdmin'id='proveedor-radio' value={'true'}/>
+                 <label>Artesano:</label>
+                <Field type= 'radio'name='isAdmin'id='artesano-radio' value={'false'}/>
+                <button id='submitButton' type='submit'>Submit</button>
+                <pre>{JSON.stringify(values,null, 2)}</pre>
               </Form>
             )}
           </Formik>
@@ -99,7 +79,8 @@ class register extends Component {
 
 const mapStateToProps = state => ({
   users: state.users,
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  isAdmin: state.users.isAdmin
 })
 
 const mapDispatchToProps = dispatch => {

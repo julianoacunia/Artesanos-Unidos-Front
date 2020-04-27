@@ -1,23 +1,25 @@
+import '../../styles/productPrivate.css'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
-import {  isAuth, logOut } from '../../redux/actions/loginActions'
+import { isAuth, logOut } from '../../redux/actions/loginActions'
 import Product from './privateProduct'
 
 class viewProductPrivate extends Component {
+
     render() {
         return (
             <div className='container'>
-        <div className='header'>
-          <div className='title'>
-            <h1>Artesanos Unidos</h1>
-          </div>
-          <div className='publicity'>
-            <div className='publicity-mr'>
-            </div>
-          </div>
-        </div>
+                <div className='header'>
+                    <div className='title'>
+                        <h1>Artesanos Unidos</h1>
+                    </div>
+                    <div className='publicity'>
+                        <div className='publicity-mr'>
+                        </div>
+                    </div>
+                </div>
                 {this.props.isAuth ? (
                     <div className='logged'>
                         <div className='options'>
@@ -55,6 +57,12 @@ class viewProductPrivate extends Component {
                     <div className='col-md-8'>
                         <Product />
                     </div>
+                    <div className='col-md-4'>
+                        <div className='class-add'>
+                            <h3 className='title-add'>Agregar Producto</h3>
+                            <Link className='btn-add' to='/formProduct'>+</Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
@@ -72,7 +80,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ isAuth, logOut}, dispatch)
+    return bindActionCreators({ isAuth, logOut }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(viewProductPrivate)

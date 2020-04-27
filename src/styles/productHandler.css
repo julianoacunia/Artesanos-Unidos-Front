@@ -1,0 +1,28 @@
+.product-private {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+.thumbnail-text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.btn-product-handler{
+    margin: 2px;
+    color: #fff;
+    background-color: #a31919;
+    border: 2px solid #a31919;
+    border-radius: 5px;
+}

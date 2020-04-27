@@ -124,6 +124,7 @@ const mapStateToProps = (state, ownProps) => {
     users: state.users,
     isLoading: state.users.isLoading,
     isAuth: state.users.isAuth,
+    isAdmin: state.users.isAdmin,
     failedLogin: state.users.failedLogin
   }
 }

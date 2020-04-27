@@ -1,4 +1,4 @@
-import '../../styles/productPrivate.css'
+import '../../styles/productHandler.css'
 import React, { Component } from 'react'
 import util from '../../helpers/utils'
 import { connect } from 'react-redux'
