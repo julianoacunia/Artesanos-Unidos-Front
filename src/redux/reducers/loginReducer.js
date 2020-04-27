@@ -11,6 +11,7 @@ import {
 } from '../actions/types'
 
 const initialState = {
+    userId: undefined,
     isAuth: false,
     users: [],
     name: undefined,
@@ -46,7 +47,8 @@ export default function(state = initialState, action) {
                 isLoading: false,
                 token: action.payload.token,
                 isAuth: true,
-                user: action.payload.user.name
+                user: action.payload.user.name,
+                userId: action.payload.user._id
             }
         case LOGIN_USER_ERROR:
             return {
@@ -67,7 +69,7 @@ export default function(state = initialState, action) {
         }
         case ADD_USER_SUCCESS: {
             const newUser = action.payload.user
-            const user = [...state.users, newUser]
+            const user = state.users.length ? [...state.users, newUser]: [newUser]
             return {
               ...state,
               isLoading: false,

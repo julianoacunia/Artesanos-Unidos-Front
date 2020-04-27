@@ -23,6 +23,14 @@ import {
         })
 }
 
+export const fetchProductById = (userId) => dispatch => {
+  fetch(`http://localhost:5000/api/products/${userId}`)
+  .then(res => res.json())
+  .then(data => {
+      return dispatch ({ type: FETCH_PRODUCTS, payload: data})
+  })
+}
+
 // POST PRODUCTS 
 export const postProduct = product => {
     return dispatch => {

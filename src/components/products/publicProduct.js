@@ -13,15 +13,15 @@ class publicProduct extends Component {
 
   render() {
     const productItems = this.props.products.map(product => (
-      <div className='col-md-4' key={product._id}>
-        <div className='thumbnail text-center'>
+      <div className='product-container' key={product._id}>
+        <div className='thumbnail-text-center'>
           <a 
             className='name-product'
             href={`#${product._id}`}
             onClick={() => this.props.addToCart(this.props.cartItems, product)}
           >
             <img src='https://via.placeholder.com/150' alt='photo' />
-            <p id='name-product'>{product.title}</p>
+            <p id='name-product'>{product.tittle}</p>
           </a>
           <b>{util.formatCurrency(product.price)}</b>
           

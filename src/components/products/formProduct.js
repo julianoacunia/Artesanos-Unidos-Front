@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Formik, Form, Field } from 'formik'
-import { postProduct, fetchProducts } from '../../redux/actions/productActions'
+import { postProduct } from '../../redux/actions/productActions'
 import { Link } from 'react-router-dom'
 import { isAuth, logOut } from '../../redux/actions/loginActions'
 
@@ -64,7 +64,6 @@ class formProduct extends Component {
             <div className='form-container'>
               <Formik
                 initialValues={{
-                  id: '',
                   photo: 'https://via.placeholder.com/150',
                   tittle: '',
                   description: '',
@@ -73,15 +72,22 @@ class formProduct extends Component {
                   img:''
                 }}
                 onSubmit={values => {
-                  this.props.postProduct(values)
-                  this.props.fetchProducts()
+                  const id = this.props.userId
+                  const newProduct = {
+                    ...values,
+                    userId: id
+                  }
+                  this.props.postProduct(newProduct).then(res => {
+                    if (res.type === 'ADD_PRODUCT_SUCCESS') {
+                      this.props.history.push('/privateProduct')
+                    }
+                  })
                 }}
               >
                 {({ values,handleSubmit }) => (
                   <Form 
                     onSubmit={handleSubmit}
                     style={{ display: 'flex', flexDirection: 'column'}}>
-                    <Field type='text' name='id' placeholder='Codigo' />
                     <Field type='text' name='tittle' placeholder='Titulo'/>
                     <Field type='text' name='description' placeholder='Descripción'/>
                     <Field type='number' name='price' placeholder='Precio' />
@@ -106,13 +112,14 @@ const mapStateToProps = state => {
     name: state.users.user,
     isLoading: state.isLoading,
     isAuth: state.isAuth,
-    productSelected: state.products.productSelected
+    productSelected: state.products.productSelected,
+    userId: state.users.userId
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { postProduct, isAuth, logOut, fetchProducts },
+    { postProduct, isAuth, logOut },
     dispatch
   )
 }

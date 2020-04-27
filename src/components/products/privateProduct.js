@@ -4,14 +4,14 @@ import util from '../../helpers/utils'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
-  fetchProducts,
+  fetchProductById,
   deleteProduct,
   setProductOnForm
 } from '../../redux/actions/productActions'
 
 class privateProduct extends Component {
   componentDidMount() {
-    this.props.fetchProducts()
+    this.props.fetchProductById(this.props.userId)
   }
 
   render() {
@@ -45,12 +45,13 @@ class privateProduct extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.products.items
+  products: state.products.items,
+  userId: state.users.userId
 })
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { fetchProducts, deleteProduct, setProductOnForm },
+    { fetchProductById, deleteProduct, setProductOnForm },
     dispatch
   )
 }
