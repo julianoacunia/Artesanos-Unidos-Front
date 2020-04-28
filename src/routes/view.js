@@ -8,6 +8,7 @@ import PrivateProduct from '../components/products/viewPrivateProduct'
 import FormProduct from '../components/products/formProduct'
 import Login from '../components/login/viewLogin'
 import Register from '../components/register/viewRegister'
+import Cart from '../components/carts/viewCart'
 import store from '../redux/store'
 
 class Routes extends Component {
@@ -22,6 +23,7 @@ class Routes extends Component {
           <Route exact path='/publicProduct' component={PublicProduct}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/register' component={Register}/>
+          <Route exact path='/cart' component={Cart}/>
           <Redirect from='/' to='/publicHome' />
         </Switch>
       </BrowserRouter>
