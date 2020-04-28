@@ -102,7 +102,7 @@ class login extends Component {
                         Log In
                       </button>
                   ) : (
-                    <ClipLoader size={75} color={'black'} loading />
+                    <ClipLoader size={50} color={'black'} loading />
                   )}
                   <div className='bad-credentials-1'>
                     {this.props.failedLogin ? (

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { postUser } from '../../redux/actions/loginActions'
+import { ClipLoader } from 'react-spinners'
 
 class register extends Component {
   render() {
@@ -47,7 +48,11 @@ class register extends Component {
           <Formik
             initialValues={{ name: '', lastName: '', email: '', password: '', isAdmin: ''}}
             onSubmit={values => {
-              this.props.postUser(values)
+              this.props.postUser(values).then(res => {
+                if (res.type === 'ADD_USER_SUCCESS') {
+                  this.props.history.push('/login')
+                }
+              })
             }}
           >
             {({ values, handleSubmit }) => (
@@ -66,8 +71,18 @@ class register extends Component {
                 <Field type= 'radio'name='isAdmin'id='proveedor-radio' value={'true'}/>
                  <label>Artesano:</label>
                 <Field type= 'radio'name='isAdmin'id='artesano-radio' value={'false'}/>
+                <div className='register-buttons'>
+                {!this.props.isLoading ? (
                 <button id='submitButton' type='submit'>Submit</button>
-                <pre>{JSON.stringify(values,null, 2)}</pre>
+                ) : (
+                  <ClipLoader size={50} color={'black'} loading />
+                )}
+                <div className='bad-credentials-1'>
+                    {this.props.failedRegister ? (
+                      <div id='bad-credentials'>Debe completar el formulario</div>
+                    ) : null}
+                  </div>
+                </div>
               </Form>
             )}
           </Formik>
@@ -79,8 +94,9 @@ class register extends Component {
 
 const mapStateToProps = state => ({
   users: state.users,
-  isLoading: state.isLoading,
-  isAdmin: state.users.isAdmin
+  isLoading: state.users.isLoading,
+  isAdmin: state.users.isAdmin,
+  failedRegister: state.users.failedRegister
 })
 
 const mapDispatchToProps = dispatch => {

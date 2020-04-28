@@ -87,7 +87,8 @@ const mapStateToProps = state => {
     name: state.users.user,
     isLoading: state.isLoading,
     isAuth: state.isAuth,
-    productSelected: state.products.productSelected
+    productSelected: state.products.productSelected,
+    isAdmin: state.users.isAdmin
   }
 }
 

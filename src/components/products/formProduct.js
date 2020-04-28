@@ -1,4 +1,5 @@
 import '../../styles/home.css'
+import '../../styles/formProduct.css'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -88,13 +89,14 @@ class formProduct extends Component {
                   <Form 
                     onSubmit={handleSubmit}
                     style={{ display: 'flex', flexDirection: 'column'}}>
-                    <Field type='text' name='tittle' placeholder='Titulo'/>
-                    <Field type='text' name='description' placeholder='Descripción'/>
-                    <Field type='number' name='price' placeholder='Precio' />
-                    <Field type='number' name='stock' placeholder='Stock' />
-                    <Field type='text' name='img' placeholder='Imagen' />
+                    <div className='container-form'>
+                    <Field id='title-register' type='text' name='tittle' placeholder='Titulo'/>
+                    <Field id='register-description' type='text' name='description' placeholder='Descripción'/>
+                    <Field id='register-price' type='number' name='price' placeholder='Precio' />
+                    <Field id='register-stock' type='number' name='stock' placeholder='Stock' />
+                    <Field id='register-img' type='text' name='img' placeholder='Imagen' />
+                    </div>
                     <button id='btn-form' type='submit'>Submit</button>
-                <pre>{JSON.stringify(values, null, 2)}</pre>
                   </Form>
                 )}
               </Formik>

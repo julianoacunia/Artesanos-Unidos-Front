@@ -20,7 +20,8 @@ const initialState = {
     message: undefined,
     logged: false,
     token: '',
-    failedLogin: false
+    failedLogin: false,
+    failedRegister: false
 }
 
 export default function(state = initialState, action) {
@@ -65,7 +66,8 @@ export default function(state = initialState, action) {
         case ADD_USER_PENDING:
         return {
           ...state,
-          isLoading: true
+          isLoading: true,
+          failedRegister: false
         }
         case ADD_USER_SUCCESS: {
             const newUser = action.payload.user
@@ -81,7 +83,8 @@ export default function(state = initialState, action) {
           ...state,
           isLoading: false,
           error: action.error,
-          message: action.payload.message
+          message: action.payload.message,
+          failedRegister: true
         }
         default:
             return state
