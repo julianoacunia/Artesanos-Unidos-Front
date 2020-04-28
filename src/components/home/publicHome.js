@@ -56,7 +56,6 @@ class publicHome extends Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state.categories,
     cart: state.cart,
     isLoading: state.isLoading,
     isAuth: state.isAuth

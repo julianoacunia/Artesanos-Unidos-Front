@@ -1,0 +1,9 @@
+.alert-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 200px;
+    background-color: #17a2b8;
+}

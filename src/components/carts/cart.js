@@ -1,4 +1,4 @@
-import '../../styles/basket.css'
+import '../../styles/cart.css'
 import React, { Component } from 'react'
 import util from '../../helpers/utils'
 import { connect } from 'react-redux'
@@ -9,7 +9,7 @@ class cart extends Component {
   render() {
     const { cartItems } = this.props
     return (
-      <div className='alert alert-info'>
+      <div className='alert-info'>
         {cartItems.length === 0 ? (
           'Basket is empty'
         ) : (

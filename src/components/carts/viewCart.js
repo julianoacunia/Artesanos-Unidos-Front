@@ -71,7 +71,7 @@ const mapStateToProps = state => {
     isLoading: state.isLoading,
     isAuth: state.isAuth,
     productSelected: state.products.productSelected,
-    CartItem: state.Cart.CartItem
+    cartItem: state.cart.cartItem
   }
 }
 
