@@ -27,9 +27,8 @@ class publicProduct extends Component {
           
           <button
             className='btn btn-primary'
-            onClick={()=> {if (this.props.isAuth)
+            onClick={()=> {
              {this.props.addToCart(this.props.cartItems, product)}
-              else {console.log('Debe registrarse')}
             }}
           >
             Add to cart

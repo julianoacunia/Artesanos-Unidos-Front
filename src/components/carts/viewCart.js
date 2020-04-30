@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Formik, Form, Field } from 'formik'
 import { postProduct } from '../../redux/actions/productActions'
 import { Link } from 'react-router-dom'
 import { isAuth, logOut } from '../../redux/actions/loginActions'
@@ -25,25 +24,24 @@ class formProduct extends Component {
         <div className='logged'>
           <div className='options'>
             <div className='homeMenu'>
-              <Link to='/privateHome'>Home</Link>
+              <Link to='/privateHome'>Inicio</Link>
             </div>
             <div className='productMenu'>
-              <Link to='/privateProduct'>Product</Link>
+              <Link to='/privateProduct'>Productos</Link>
             </div>
             <div className='categorieMenu'>
-              <Link to='categoriePrivate'>Categorie</Link>
+              <Link to='categoriePrivate'>Categorias</Link>
             </div>
             <div className='basketMenu'>
-              <Link to='basket'>Basket</Link>
+              <Link to='basket'>Carrito</Link>
             </div>
           </div>
           <div className='buttonSession'>
-            <div className='adminsession'>{this.props.name}</div>
-            <div className='my-product'>
-              <Link to='/privateProduct'>Mis Productos</Link>
+            <div className='loginMenu'>
+              <Link to='/login'>Login</Link>
             </div>
-            <div className='buttonmenu'>
-              <Link to='/login' onClick={this.props.logOut}>Logout</Link>
+            <div className='registerMenu'> 
+              <Link to='/register'>Register</Link>
             </div>
           </div>
         </div>

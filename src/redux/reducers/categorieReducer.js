@@ -12,7 +12,8 @@ const initialState = {
     items: [],
     error: null,
     isLoading: false,
-    message: undefined
+    message: undefined,
+    categoryId: undefined
 }
 
 export default function ( state = initialState, action) {
@@ -21,7 +22,7 @@ export default function ( state = initialState, action) {
         return {
             ...state,
             items: action.payload,
-            adminActions: false
+            categoryId: action.payload._id
         }
         case ADD_CATEGORIE_PENDING:
         return {
@@ -30,7 +31,7 @@ export default function ( state = initialState, action) {
         }
         case ADD_CATEGORIE_SUCCESS: {
         const newCategorie = action.payload.categorie.data
-        const categories = [...state.items, newCategorie]
+        const categories =  [...state.items, newCategorie]
             return {
                 ...state,
                 isLoading: false,

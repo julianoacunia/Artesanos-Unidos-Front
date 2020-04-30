@@ -14,6 +14,7 @@ export const fetchCategories = () => dispatch => {
     fetch('http://localhost:5000/api/categories')
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             return dispatch ({ type: FETCH_CATEGORIES, payload: data})
         })
 }
@@ -24,15 +25,11 @@ export const postCategories = categorie => {
         dispatch({
             type: ADD_CATEGORIE_PENDING
         })
-        const {
-            users: { token }
-        } = store.getState()
         const options = {
             timeout: 25000,
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                Authorization: `BEARER ${token}`
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(categorie)
         }

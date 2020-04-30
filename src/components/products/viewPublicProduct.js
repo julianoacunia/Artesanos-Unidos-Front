@@ -20,16 +20,16 @@ class viewPublicProduct extends Component {
             <div className='logged'>
               <div className='options'>
                 <div className='homeMenu'>
-                  <Link to='home'>Home</Link>
+                  <Link to='home'>Inicio</Link>
                 </div>
                 <div className='productMenu'>
-                  <Link to='/publicProduct'>Product</Link>
+                  <Link to='/publicProduct'>Productos</Link>
                 </div>
                 <div className='categorieMenu'>
-                  <Link to='/categorie'>Categorie</Link>
+                  <Link to='/categorie'>Categorias</Link>
                 </div>
                 <div className='basketMenu'>
-                  <Link to='/cart'>Cart</Link>
+                  <Link to='/cart'>Carrito</Link>
                 </div>
               </div>
               <div className='buttonSession'>

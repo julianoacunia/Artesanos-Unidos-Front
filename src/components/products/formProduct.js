@@ -5,11 +5,15 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Formik, Form, Field } from 'formik'
 import { postProduct } from '../../redux/actions/productActions'
+import { fetchCategories } from '../../redux/actions/categorieActions'
 import { Link } from 'react-router-dom'
 import { isAuth, logOut } from '../../redux/actions/loginActions'
 
 
 class formProduct extends Component {
+  componentDidMount() {
+    this.props.fetchCategories()
+  }
   render() {
     return (
       <div className='container'>
@@ -26,16 +30,16 @@ class formProduct extends Component {
         <div className='logged'>
           <div className='options'>
             <div className='homeMenu'>
-              <Link to='/privateHome'>Home</Link>
+              <Link to='/privateHome'>Inicio</Link>
             </div>
             <div className='productMenu'>
-              <Link to='/privateProduct'>Product</Link>
+              <Link to='/privateProduct'>Productos</Link>
             </div>
             <div className='categorieMenu'>
-              <Link to='categoriePrivate'>Categorie</Link>
+              <Link to='categoriePrivate'>Categorias</Link>
             </div>
             <div className='basketMenu'>
-              <Link to='basket'>Basket</Link>
+              <Link to='basket'>Carrito</Link>
             </div>
           </div>
           <div className='buttonSession'>
@@ -95,8 +99,13 @@ class formProduct extends Component {
                     <Field id='register-price' type='number' name='price' placeholder='Precio' />
                     <Field id='register-stock' type='number' name='stock' placeholder='Stock' />
                     <Field id='register-img' type='text' name='img' placeholder='Imagen' />
+                    <Field as="select" name="categoryId">
+                    {this.props.categories.map(category => 
+                      (<option value={category._id}>{category.name}</option>))}
+                    </Field>
                     </div>
                     <button id='btn-form' type='submit'>Submit</button>
+                    <pre>{JSON.stringify(values,null,2)}</pre>
                   </Form>
                 )}
               </Formik>
@@ -115,13 +124,15 @@ const mapStateToProps = state => {
     isLoading: state.isLoading,
     isAuth: state.isAuth,
     productSelected: state.products.productSelected,
-    userId: state.users.userId
+    userId: state.users.userId,
+    categoryId: state.categories.categoryId,
+    categories: state.categories.items
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { postProduct, isAuth, logOut },
+    { postProduct, isAuth, logOut, fetchCategories },
     dispatch
   )
 }

@@ -1,9 +1,23 @@
 .alert-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    border-radius: 20px;
     width: 50%;
     height: 200px;
-    background-color: #17a2b8;
+    background-color: #8ba1a5;
+}
+.btn-danger {
+    border: 2px solid #a31919;
+    border-radius: 2px;
+    background-color: #a31919;
+}
+
+.cart-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
 }

@@ -16,14 +16,14 @@ class cart extends Component {
           <div>you have {cartItems.length} products in the basket</div>
         )}
         {cartItems.length > 0 && (
-          <div>
-            <ul style={{ marginLeft: -25 }}>
+          <div className='cart-product'>
+            <ul>
               {cartItems.map(item => (
                 <li key={item.id}>
-                  <b>{item.title}</b>
+                  <b>{item.tittle}</b>
                   <button
                     style={{ float: 'right' }}
-                    className='btn btn-danger btn-xs'
+                    className='btn-danger'
                     onClick={() =>
                       this.props.removeFromCart(this.props.cartItems, item)
                     }
@@ -41,7 +41,11 @@ class cart extends Component {
                 cartItems.reduce((a, c) => a + c.price * c.count, 0)
               )}
             </b>
-            <button className='btn btn-primary'>checkout</button>
+            <button className='btn btn-primary' onClick={()=> {if (this.props.isAuth)
+              //aca paso la accion que quiero validar por props
+             {}
+              else {console.log('Debe registrarse')}
+            }}>checkout</button>
           </div>
         )}
       </div>

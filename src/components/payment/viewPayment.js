@@ -2,24 +2,10 @@ import '../../styles/home.css'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { postProduct, updateProduct } from '../../redux/actions/productActions'
 import { Link } from 'react-router-dom'
-import { isAuth, logOut} from '../../redux/actions/loginActions'
+import { isAuth, logOut } from '../../redux/actions/loginActions'
 
-
-
-class privateHome extends Component {
-  capturarDatos() {
-    const productToUpdate = this.props.products.find(
-      product => product._id === this.props.productSelected
-    )
-    return {
-      tittle: productToUpdate.tittle,
-      description: productToUpdate.description,
-      availableSize: productToUpdate.availableSize,
-      price: productToUpdate.price
-    }
-  }
+class viewPayment extends Component {
   render() {
     return (
       <div className='container'>
@@ -47,9 +33,6 @@ class privateHome extends Component {
             <div className='basketMenu'>
               <Link to='basket'>Carrito</Link>
             </div>
-            <div className='paymentMenu'>
-              <Link to='/payment'>Pagar</Link>
-            </div>
           </div>
           <div className='buttonSession'>
             <div className='adminsession'>{this.props.name}</div>
@@ -73,8 +56,11 @@ class privateHome extends Component {
         )}
         <hr />
         <div className='row'>
-          <div className='categoriesPrivate'>
-          </div>
+            <div className='form-payment'>
+            <h4>Formulario de pago</h4>
+            <div className='form-container'>
+            </div>
+            </div>
         </div>
       </div>
     )
@@ -83,20 +69,17 @@ class privateHome extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products.items,
     name: state.users.user,
     isLoading: state.isLoading,
-    isAuth: state.isAuth,
-    productSelected: state.products.productSelected,
-    isAdmin: state.users.isAdmin
+    isAuth: state.isAuth
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { postProduct, updateProduct, isAuth, logOut },
+    { isAuth, logOut} ,
     dispatch
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(privateHome)
+export default connect(mapStateToProps, mapDispatchToProps)(viewPayment)

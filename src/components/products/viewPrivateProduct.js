@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom'
 import { isAuth, logOut } from '../../redux/actions/loginActions'
 import Product from './privateProduct'
 
+
 class viewProductPrivate extends Component {
+
+ 
 
     render() {
         return (
@@ -24,16 +27,16 @@ class viewProductPrivate extends Component {
                     <div className='logged'>
                         <div className='options'>
                             <div className='homeMenu'>
-                                <Link to='/privateHome'>Home</Link>
+                                <Link to='/privateHome'>Inicio</Link>
                             </div>
                             <div className='productMenu'>
-                                <Link to='/privateProduct'>Product</Link>
+                                <Link to='/privateProduct'>Productos</Link>
                             </div>
                             <div className='categorieMenu'>
-                                <Link to='categoriePrivate'>Categorie</Link>
+                                <Link to='categoriePrivate'>Categorias</Link>
                             </div>
                             <div className='basketMenu'>
-                                <Link to='basket'>Cart</Link>
+                                <Link to='basket'>Carrito</Link>
                             </div>
                         </div>
                         <div className='buttonSession'>
@@ -70,8 +73,7 @@ class viewProductPrivate extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        categories: state.categories,
+    return { 
         cart: state.cart,
         isLoading: state.isLoading,
         name: state.users.user,
@@ -80,7 +82,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ isAuth, logOut }, dispatch)
+    return bindActionCreators({ isAuth, logOut}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(viewProductPrivate)

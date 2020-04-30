@@ -18,7 +18,8 @@ const initialState = {
     filteredItems: [],
     error: null,
     isLoading: false,
-    message: undefined
+    message: undefined,
+    title:''
 }
 
 export default function ( state = initialState, action) {
@@ -27,8 +28,7 @@ export default function ( state = initialState, action) {
         return {
             ...state,
             items: action.payload,
-            filteredItems: action.payload,
-            adminActions: false
+            filteredItems: action.payload
         }
         case ADD_PRODUCT_PENDING:
         return {
