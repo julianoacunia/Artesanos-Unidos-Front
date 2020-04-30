@@ -31,6 +31,14 @@ export const fetchProductById = (userId) => dispatch => {
   })
 }
 
+export const fetchProductByIdCategory = (categoryId) => dispatch => {
+  fetch(`http://localhost:5000/api/products/${categoryId}`)
+  .then(res => res.json())
+  .then(data => {
+      return dispatch ({ type: FETCH_PRODUCTS, payload: data})
+  })
+}
+
 // POST PRODUCTS 
 export const postProduct = product => {
     return dispatch => {
