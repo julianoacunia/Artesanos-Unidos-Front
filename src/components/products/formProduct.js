@@ -99,9 +99,9 @@ class formProduct extends Component {
                     <Field id='register-price' type='number' name='price' placeholder='Precio' />
                     <Field id='register-stock' type='number' name='stock' placeholder='Stock' />
                     <Field id='register-img' type='text' name='img' placeholder='Imagen' />
-                    <Field as="select" name="categoryId">
+                    <Field as="select" name="category_name">
                     {this.props.categories.map(category => 
-                      (<option value={category._id}>{category.name}</option>))}
+                      (<option value={category.category_name}>{category.name}</option>))}
                     </Field>
                     </div>
                     <button id='btn-form' type='submit'>Submit</button>
@@ -125,8 +125,8 @@ const mapStateToProps = state => {
     isAuth: state.isAuth,
     productSelected: state.products.productSelected,
     userId: state.users.userId,
-    categoryId: state.categories.categoryId,
-    categories: state.categories.items
+    categories: state.categories.items,
+    category_name: state.categories.category_name
   }
 }
 

@@ -10,7 +10,8 @@ import {
     DELETE_PRODUCT_SUCCESS,
     DELETE_PRODUCT_ERROR,
     SET_SELECTED_PRODUCT_ID,
-    ORDER_PRODUCTS_BY_PRICE
+    ORDER_PRODUCTS_BY_PRICE,
+    SET_SELECTED_CATEGORY
  } from '../actions/types'
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
     error: null,
     isLoading: false,
     message: undefined,
-    title:''
+    title:'',
+    categoryName:'TODOS'
 }
 
 export default function ( state = initialState, action) {
@@ -102,6 +104,12 @@ export default function ( state = initialState, action) {
             return {
               ...state,
               productSelected: action.payload
+            }
+        }
+        case SET_SELECTED_CATEGORY: {
+            return {
+                ...state,
+                categoryName: action.payload
             }
         }
         case ORDER_PRODUCTS_BY_PRICE: {

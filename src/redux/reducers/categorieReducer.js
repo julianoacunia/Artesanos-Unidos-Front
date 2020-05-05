@@ -22,7 +22,7 @@ export default function ( state = initialState, action) {
         return {
             ...state,
             items: action.payload,
-            categoryId: action.payload._id
+            category_name: action.payload.name
         }
         case ADD_CATEGORIE_PENDING:
         return {

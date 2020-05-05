@@ -3,16 +3,18 @@ import React, { Component } from 'react'
 import util from '../../helpers/utils'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchProducts } from '../../redux/actions/productActions'
 import { addToCart } from '../../redux/actions/cartActions'
+import { fetchProducts } from '../../redux/actions/productActions'
 
 class publicProduct extends Component {
   componentDidMount() {
     this.props.fetchProducts()
   }
-
   render() {
-    const productItems = this.props.products.map(product => (
+    const filterProducts = this.props.categoryName!=='TODOS' ?
+    this.props.products.filter(product => (product.category_name === this.props.categoryName)) : 
+    this.props.products
+    const productItems = filterProducts.map(product => (
       <div className='product-container' key={product._id}>
         <div className='thumbnail-text-center'>
           <a 
@@ -36,14 +38,15 @@ class publicProduct extends Component {
         </div>
       </div>
     ))
-    return <div className='row'>{productItems}</div>
+    return  <div className='row'>{productItems}</div>
   }
 }
 
 const mapStateToProps = state => ({
   products: state.products.items,
   cartItems: state.cart.items,
-  isAuth: state.users.isAuth
+  isAuth: state.users.isAuth,
+  categoryName: state.products.categoryName
 })
 
 const mapDispatchToProps = dispatch => {

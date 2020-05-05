@@ -10,7 +10,8 @@ import {
     DELETE_PRODUCT_SUCCESS,
     DELETE_PRODUCT_ERROR,
     SET_SELECTED_PRODUCT_ID,
-    ORDER_PRODUCTS_BY_PRICE
+    ORDER_PRODUCTS_BY_PRICE,
+    SET_SELECTED_CATEGORY
  } from './types'
  import store from '../store'
 
@@ -31,10 +32,11 @@ export const fetchProductById = (userId) => dispatch => {
   })
 }
 
-export const fetchProductByIdCategory = (categoryId) => dispatch => {
+export const fetchProductByNameCategory = (categoryId) => dispatch => {
   fetch(`http://localhost:5000/api/products/${categoryId}`)
   .then(res => res.json())
   .then(data => {
+      console.log(data)
       return dispatch ({ type: FETCH_PRODUCTS, payload: data})
   })
 }
@@ -168,6 +170,17 @@ export const setProductOnForm = _id => {
       })
     }
 }
+
+//SET CATEGORY
+export const setProductCategory = categoryName => {
+  return dispatch => {
+    dispatch({
+      type: SET_SELECTED_CATEGORY,
+      payload: categoryName
+    })
+  }
+}
+
 
 //SORT PRODUCTS BY PRICE
 export const sortProducts = (products, sort) => dispatch => {
