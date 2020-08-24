@@ -44,7 +44,8 @@ class cart extends Component {
             <button className='btn btn-primary' onClick={()=> {if (this.props.isAuth)
               //aca paso la accion que quiero validar por props
              {}
-              else {console.log('Debe registrarse')}
+              else {window.alert('Debe Registrarse')
+              return}
             }}>checkout</button>
           </div>
         )}

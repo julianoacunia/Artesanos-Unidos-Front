@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import util from '../../helpers/utils'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 import {
   fetchProductById,
   deleteProduct,
@@ -13,7 +14,6 @@ class privateProduct extends Component {
   componentDidMount() {
     this.props.fetchProductById(this.props.userId)
   }
-
   render() {
     const productItems = this.props.products.map(product => (
       <div className='product-private'>
@@ -27,16 +27,12 @@ class privateProduct extends Component {
           <div className='btn-product'>
           <button
             className='btn-product-handler'
-            onClick={() => this.props.deleteProduct(product._id)}
+            onClick={() => {if(window.confirm('Desea eliminar el producto?'))
+          {this.props.deleteProduct(product._id)}}} 
           >
-            Delete Product
+            Borrar Producto
           </button>
-          <button
-            className='btn-product-handler'
-            onClick={() => this.props.setProductOnForm(product._id)}
-          >
-            Update Product
-          </button>
+            <Link className='btn-modified' to='/modifiedProduct'>Modificar Producto</Link>
           </div>
       </div>
     ))

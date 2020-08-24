@@ -7,6 +7,7 @@ import PrivateHome from '../components/home/privateHome'
 import PrivateProduct from '../components/products/viewPrivateProduct'
 import Payment from '../components/payment/viewPayment'
 import FormProduct from '../components/products/formProduct'
+import ModifiedProduct from '../components/products/modifiedProduct'
 import Login from '../components/login/viewLogin'
 import Register from '../components/register/viewRegister'
 import Categorie from '../components/categories/viewPublicCategory'
@@ -22,6 +23,7 @@ class Routes extends Component {
           <PrivateRoute exact path='/privateHome' component={PrivateHome} />
           <PrivateRoute exact path='/privateProduct' component={PrivateProduct} />
           <PrivateRoute exact path='/formProduct' component={FormProduct} />
+          <PrivateRoute exact path='/modifiedProduct' component={ModifiedProduct} />
           <PrivateRoute exact path='/payment' component={Payment} />
           <Route exact path='/categorie' component={Categorie}/>
           <Route exact path='/publicHome' component={PublicHome}/>

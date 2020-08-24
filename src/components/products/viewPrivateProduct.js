@@ -8,9 +8,6 @@ import Product from './privateProduct'
 
 
 class viewProductPrivate extends Component {
-
- 
-
     render() {
         return (
             <div className='container'>

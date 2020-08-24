@@ -5,85 +5,83 @@
     width: 100%;
     height: 100%;
 }
-.tittle-login{
-    text-align: center;
-    background-color:#da0707;
-    color: #ffffff;
-    width: 100%;
-}
-.Back-to-catalog {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-}
-.Back-to-catalog-link{
-    text-decoration: none;
-    color: #000;
-    margin-right: 10px;
-}
-#login {
+#form-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    width: 100%;
+    align-items: flex-start;
+    margin-bottom: 2px;    
+}
+.lblLogin{
+    font-size: 20px;
+    margin-left: 5px;
+    color: #495057;
+}
+.smlEmail{
+    margin-left: 12px;
 }
 #form-login{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    width: 400px;
+    border:.2rem solid #ececec;
+    margin-top: 10px;
 }
 .container-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
 }
 #inputEmail {
-    margin: 5px;
-    width: 325px;
-    font-weight: bolder;
-    font-size: 18px;
+    width: 335px;
+    height: calc(1.5em + .75rem +2px);
+    margin-left: 5px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-  
-#inputPassword {
-    margin: 5px;
-    width: 325px;
-    font-size: 18px;
-    font-weight: bolder;
+#inputEmail:focus{
+    border: 3px solid #555;
 }
-
-#buttonsLoginContainer {
+.smlEmail{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #6c757d!important;
 }
-
-#buttonCreateAccount {
-    background-color: #a31919;
-    color: #fff;
-    border: 1px solid transparent;
-    margin: 2px;
-    padding: 2px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-
+#inputPassword {
+    width: 335px;
+    height: calc(1.5em + .75rem +2px);
+    margin-left: 5px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .buttonLogin {
-    background-color: #a31919;
     color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
     border: 1px solid transparent;
-    margin: 2px;
-    padding: 2px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    width: 100px;
+    margin: 5px;
 }
 #bad-credentials {
     display: flex;
@@ -92,6 +90,10 @@
     font-weight: bolder;
     font-size: 20px;
     color: rgb(243, 6, 6);
+}
+.icon-log{
+    padding-right: 2px;
+    padding-top: 5px;
 }
 
 @media(max-width:522px) {

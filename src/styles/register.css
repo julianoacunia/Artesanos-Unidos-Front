@@ -1,38 +1,99 @@
+.main-register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #353638;
+    width: 100%;
+    height: 475px;
+}
+.register-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(235, 230, 230);
+    width: 500px;
+    height: 800px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+.title-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
 #inputUser {
     margin: 5px;
-    width: 325px;
-    font-weight: bolder;
+    width: 125px;
+    height: 30px;
     font-size: 18px;
+    padding-left: 6px;
 }
-
-#inputEmail {
-    margin: 5px;
-    width: 325px;
-    font-weight: bolder;
-    font-size: 18px;
-}
-
-#inputPassword {
-    margin: 5px;
-    width: 325px;
-    font-weight: bolder;
-    font-size: 18px;
-}
-
 #inputLastName {
     margin: 5px;
-    width: 325px;
-    font-weight: bolder;
+    width: 125px;
+    height: 30px;
     font-size: 18px;
+    margin-left: 60px;
+    padding-left: 6px;
+}
+#inputEmail-register {
+    margin: 5px;
+    width: 331px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 6px;
+    margin-bottom: 15px;
 }
 
+#inputPassword-register {
+    margin: 5px;
+    width: 331px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 6px;
+    margin-bottom: 15px;
+}
+#proveedor-radio{
+    margin-right: 100px;
+}
 #submitButton {
-    background-color: #a31919;
     color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
     border: 1px solid transparent;
-    margin: 2px;
-    padding: 2px;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 15px;
+    border-radius: .25rem;
+    width: 331px;
+    height: 30px;
+    margin: 5px;
+}
+.name-lastname{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.rd-form {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+.link{
+    display: flex;
+    flex-direction: row;
+}
+#redirect-login{
+    margin-left: 5px;
+    font-size: 20px;
+}
+.redirect-p{
+    color: #fff;
+    font-size: 20px;
 }

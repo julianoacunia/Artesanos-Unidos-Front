@@ -26,4 +26,14 @@
     background-color: #a31919;
     border: 2px solid #a31919;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.btn-modified{
+    margin: 1px;
+    color: #fff;
+    background-color: #a31919;
+    border: 2px solid #a31919;
+    border-radius: 5px;
+    font-size: 15px;
 }

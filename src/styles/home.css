@@ -7,7 +7,7 @@
 .header {
     display: flex;
     flex-direction: row;
-    background-color: #da0707;
+    background-color: #212529;
     width: 100%;
     height: 100px;
 }
@@ -18,6 +18,10 @@
     color: #fff;
     width: 80%;
     height: 100px;
+}
+.text3{
+    margin-left: 3px;
+    color: #61dafb;
 }
 .publicity {
     display: flex;
@@ -37,7 +41,7 @@
     flex-direction: row;
     width: 100%;
     height: 50px;
-    background-color: #a31919;
+    background-color: #20232a;
 }
 .buttonSession{
     display: flex;
@@ -76,7 +80,6 @@
 .basketMenu {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 50px;
     height: 50px;
 }
@@ -92,24 +95,7 @@
     align-items: center;
     width: 10%;
 }
-.productMenu:hover {
-    background-color: #860202;
-}
-.loginMenu:hover {
-    background-color: #860202;
-}
-.registerMenu:hover {
-    background-color: #860202;
-}
-.basketMenu:hover {
-    background-color: #860202;
-}
-.categorieMenu:hover {
-    background-color: #860202;
-}
-.homeMenu:hover {
-    background-color: #860202;
-}
+
 #login2 {
     display: flex;
     justify-content: flex-end;
@@ -118,17 +104,18 @@
 }
 .basket {
     display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    width: 100%;
-    background-color: #17a2b8;
+    align-items: center;
+}
+.basket-number {
+    position: fixed;
+    text-align: center;
+    font-size: 12px;
+    right: 78px;
+    background-color: red;
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
     color: #fff;
-    font-size: 0.930125rem;
-    border-color: #bee5eb;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 0 solid transparent;
-    border-radius: 0.25rem;
 }
 .my-product{
     display: flex;
@@ -150,41 +137,72 @@ a {
     display: flex;
     align-items: center;
     color: #fff;
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .menu {
     display: flex;
     flex-direction: row;
 }
-.row {
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #353638;
+    width: 100%;
+    height: 475px;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+.buttons-body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 5px;
-    width: 100%;
 }
-.text1 {
-    animation: bounce1 0.5s alternate infinite ease-in;
+.btn-body{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 18px;
+    border-radius: .25rem;
+    width: 100px;
+    margin: 5px;
 }
-.text3 {
-    animation: bounce3 0.5s alternate infinite ease-in;
+.btn-body-r{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 18px;
+    border-radius: .25rem;
+    width: 110px;
+    margin: 5px;
 }
-@keyframes bounce1 {
-    0% {
-        transform: translateY(-40%);
-      }
-      100% {
-        transform: translateY(0);
-    }
+.title-welcome{
+    font-size: 50px;
+    color: #fff;
+    font-family: Helvetica;
 }
-  
-@keyframes bounce3 {
-    0% {
-        transform: translateY(-40%);
-      }
-      100% {
-        transform: translateY(0);
-    }
+.p-title{
+    font-size: 25px;
+    color: #fff;
+    font-family: Helvetica;
+}
+.log-user{
+    color: #fff;
 }

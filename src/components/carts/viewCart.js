@@ -12,8 +12,9 @@ class formProduct extends Component {
     return (
       <div className='container'>
         <div className='header'>
-          <div className='title'>
-            <h1>Artesanos Unidos</h1>
+        <div className='title'>
+            <h1 className='text1'>Artesanos</h1>
+            <h1 className='text3'>Unidos</h1>
           </div>
           <div className='publicity'>
             <div className='publicity-mr'>

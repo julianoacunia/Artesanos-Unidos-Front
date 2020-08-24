@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 import { loginAccount } from '../../redux/actions/loginActions'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
-import { ClipLoader } from 'react-spinners'
+import ErrorAlert from '../alerts/errorAlert'
+import { BeatLoader } from 'react-spinners'
 
 class login extends Component {
   constructor(props) {
     super(props)
     this.getLogin = this.getLogin.bind(this)
   }
-
   //COMPARE VALUES WITH DATABASE
   getLogin = values => {
     console.log(this.props)
@@ -27,8 +27,9 @@ class login extends Component {
     return (
         <div className='container'>
         <div className='header'>
-          <div className='title'>
-            <h1>Artesanos Unidos</h1>
+        <div className='title'>
+            <h1 className='text1'>Artesanos</h1>
+            <h1 className='text3'>Unidos</h1>
           </div>
           <div className='publicity'>
             <div className='publicity-mr'>
@@ -46,19 +47,11 @@ class login extends Component {
             <div className='categorieMenu'>
               <Link to='/categorie'>Categorias</Link>
             </div>
-            <div className='basketMenu'>
-              <Link to='/cart'>Carrito</Link>
-            </div>
-          </div>
-          <div className='buttonSession'>
-            <div className='loginMenu'>
-              <Link to='/login'>Login</Link>
-            </div>
-            <div className='registerMenu'> 
-              <Link to='/register'>Register</Link>
-            </div>
           </div>
         </div>
+        {this.props.AlertMessege=='error' ?
+        <ErrorAlert/> : null
+        }
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={this.getLogin}
@@ -68,49 +61,45 @@ class login extends Component {
               id='form-login'
               onSubmit={handleSubmit}
             >
-              <div className='container-form'>
-                <div id='login'>
+              <div className='container-form' role='region' aria-label='Code Example'>
+                <div id='form-group'>
+                  <label className='lblLogin'>Email</label>
                   <Field
                     type='text'
                     id='inputEmail'
                     name='email'
-                    placeholder='email'
+                    placeholder='Enter email'
                   />
+                  <small className='smlEmail'>We'll never share your email with anyone else.</small>
+                </div>
+                <div id='form-group'>
+                  <label className='lblLogin'>Contraseña</label>
                   <Field
                     type='password'
                     id='inputPassword'
                     name='password'
-                    placeholder='password'
+                    placeholder='Password'
                   />
                 </div>
-                <div id='buttonsLoginContainer'>
-                  <div className='createAccount'>
-                    <Link
-                      id='buttonCreateAccount'
-                      className='buttonLogin'
-                      to='/register'
-                    >
-                      Create Account
-                    </Link>
-                  </div>
-                  {!this.props.isLoading ? (
-                      <button
-                        type='submit'
-                        id='buttonLogin'
-                        className='buttonLogin'
-                      >
-                        Log In
-                      </button>
-                  ) : (
-                    <ClipLoader size={50} color={'black'} loading />
-                  )}
-                  <div className='bad-credentials-1'>
-                    {this.props.failedLogin ? (
-                      <div id='bad-credentials'>Bad Credentials</div>
-                    ) : null}
-                  </div>
+                {this.props.isLoading ?  (
+                  <button
+                  type='submit'
+                  id='buttonLogin'
+                  className='buttonLogin'
+                  disabled
+                  >
+                  <BeatLoader color={'white'}/> 
+                  <span>Loading...</span>
+                </button> ) : (
+                  <button
+                  type='submit'
+                  id='buttonLogin'
+                  className='buttonLogin'
+                >
+                  Iniciar
+                </button> 
+                )}        
                 </div>
-              </div>
             </Form>
           )}
         </Formik>
@@ -118,14 +107,14 @@ class login extends Component {
     )
   }
 }
-
 const mapStateToProps = (state, ownProps) => {
   return {
     users: state.users,
     isLoading: state.users.isLoading,
     isAuth: state.users.isAuth,
     isAdmin: state.users.isAdmin,
-    failedLogin: state.users.failedLogin
+    failedLogin: state.users.failedLogin,
+    AlertMessege: state.users.AlertMessege
   }
 }
 

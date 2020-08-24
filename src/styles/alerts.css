@@ -1,0 +1,14 @@
+.alert-danger{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #a94442;
+    font-weight: solid;
+    background-color: #ebcccc;
+    border-color: #ebcccc;
+    border-radius: 20px;
+    margin-top: 10px;
+    width: 30%;
+    height: 50px;
+}

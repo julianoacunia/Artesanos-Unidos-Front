@@ -21,7 +21,8 @@ const initialState = {
     logged: false,
     token: '',
     failedLogin: false,
-    failedRegister: false
+    failedRegister: false,
+    AlertMessege: ''
 }
 
 export default function(state = initialState, action) {
@@ -56,7 +57,8 @@ export default function(state = initialState, action) {
                 ...state,
                 isLoading: false,
                 message: action.payload,
-                failedLogin: true
+                failedLogin: true,
+                AlertMessege: 'error'
             }
         case FETCH_USERS:
         return {
@@ -75,7 +77,7 @@ export default function(state = initialState, action) {
             return {
               ...state,
               isLoading: false,
-              users: user
+              users: user,
             }
         }
         case ADD_USER_ERROR:

@@ -1,22 +1,20 @@
 import '../../styles/home.css'
-import '../../styles/formProduct.css'
+import '../../styles/modifiedProduct.css'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Formik, Form, Field } from 'formik'
-import { postProduct } from '../../redux/actions/productActions'
+import { updateProduct } from '../../redux/actions/productActions'
 import { fetchCategories } from '../../redux/actions/categorieActions'
 import { Link } from 'react-router-dom'
 import { isAuth, logOut } from '../../redux/actions/loginActions'
 
 
-class formProduct extends Component {
+class modifiedProduct extends Component {
   componentDidMount() {
     this.props.fetchCategories()
   }
-  fileSelectedHandler = event => {
-    console.log(event.target.files[0])
-  }
+
   render() {
     return (
       <div className='container'>
@@ -67,8 +65,8 @@ class formProduct extends Component {
         )}
         <hr />
         <div className='row'>
-        <div className='form-add'>
-            <h4>Agregar nuevo producto</h4>
+        <div className='form-modified'>
+            <h4>Modificar un producto</h4>
             <div className='form-container'>
               <Formik
                 initialValues={{
@@ -85,8 +83,8 @@ class formProduct extends Component {
                     ...values,
                     userId: id
                   }
-                  this.props.postProduct(newProduct).then(res => {
-                    if (res.type === 'ADD_PRODUCT_SUCCESS') {
+                  this.props.updateProduct(newProduct).then(res => {
+                    if (res.type === 'UPDATE_PRODUCT_SUCCESS') {
                       this.props.history.push('/privateProduct')
                     }
                   })
@@ -101,13 +99,13 @@ class formProduct extends Component {
                     <Field id='product-description' type='text' name='description' placeholder='Descripción'/>
                     <Field id='product-price' type='number' name='price' placeholder='Precio' />
                     <Field id='product-stock' type='number' name='stock' placeholder='Stock' />
-                    <Field id='product-img' type='file' onChange={this.fileSelectedHandler} name='img'/>
-                    <Field id='product-select' as="select" name="category_name">
+                    <Field id='product-img' type='text' name='img' placeholder='Imagen' />
+                    <Field as="select" name="category_name" id='product-select'>
                     {this.props.categories.map(category => 
                       (<option value={category.category_name}>{category.name}</option>))}
                     </Field>
                     </div>
-                    <button id='btn-form' type='submit'>Guardar</button>
+                    <button id='btn-form' type='submit'>Submit</button>
                   </Form>
                 )}
               </Formik>
@@ -134,9 +132,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { postProduct, isAuth, logOut, fetchCategories },
+    { updateProduct, isAuth, logOut, fetchCategories },
     dispatch
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(formProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(modifiedProduct)
