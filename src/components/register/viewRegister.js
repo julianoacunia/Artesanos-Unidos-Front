@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { postUser } from '../../redux/actions/loginActions'
 import { ClipLoader } from 'react-spinners'
 import SuccessPopUp  from '../modals/successPopUp'
+import Card from '@material-ui/core/Card'
+import Button from '@material-ui/core/Button'
 
 class register extends Component {
   constructor () {
@@ -55,12 +57,11 @@ class register extends Component {
         <div className='main-register'>
           <div className='register-container'>
             <div className='title-register'>
-              <hr></hr>
-              <p className='title-p'>Registrarse</p>
-              <hr></hr>
+              <p className='title-p'>Completá tus datos</p>
             </div>
+            <Card className='register-card'>
             <Formik
-              initialValues={{ name: '', lastName: '', email: '', password: '', isAdmin: ''}}
+              initialValues={{ name: '', lastName: '', dni:'', email: '', password: '', isAdmin: ''}}
               onSubmit={values => {
                 this.props.postUser(values).then(res => {
                   if (res.type === 'ADD_USER_SUCCESS') {
@@ -77,8 +78,13 @@ class register extends Component {
                     <Field type='text' name='name' id='inputUser' placeholder='Nombre'/>
                     <Field type='text' name='lastName' id='inputLastName' placeholder='Apellido'/>
                   </div>
+                  <div className='dni'>
+                    <Field type='text' name='dni' id='inputUser' placeholder='Dni'/>
+                  </div>
+                  <div className='email-password'>
                   <Field type='text' name='email' id='inputEmail-register' placeholder='Email'/>
                   <Field type='password' name='password' id='inputPassword-register' placeholder='Contraseña'/>
+                  </div>
                   <div className='rd-form'>
                     <label>Proveedor:</label>
                     <Field type= 'radio'name='isAdmin'id='proveedor-radio' value={'true'}/>
@@ -87,7 +93,7 @@ class register extends Component {
                   </div>
                   <div className='register-buttons'>
                   {!this.props.isLoading ? (
-                  <button id='submitButton' type='submit'>Registrarse ahora</button>
+                  <Button id='submitButton' type='submit' variant="contained" color="primary" component="span">Registrarse ahora</Button>
                   ) : (
                     <ClipLoader size={50} color={'black'} loading />
                   )}
@@ -100,6 +106,7 @@ class register extends Component {
                 </Form>
               )}
             </Formik>
+            </Card>
           </div>
           <div className='link'>
             <p className='redirect-p'>Usted esta registrado?</p>

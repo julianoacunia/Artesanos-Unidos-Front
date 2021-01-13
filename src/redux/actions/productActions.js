@@ -15,7 +15,7 @@ import {
  } from './types'
  import store from '../store'
 
- // FETCH PRODUCTS
+ // FETCH PRODUCTS 
  export const fetchProducts = () => dispatch => {
     fetch('http://localhost:5000/api/products')
         .then(res => res.json())
@@ -41,7 +41,7 @@ export const fetchProductByNameCategory = (categoryId) => dispatch => {
   })
 }
 
-// POST PRODUCTS 
+// POST PRODUCTS ESTO ES UN THUNK
 export const postProduct = product => {
     return dispatch => {
         dispatch({

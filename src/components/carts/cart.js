@@ -4,6 +4,7 @@ import util from '../../helpers/utils'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { removeFromCart } from '../../redux/actions/cartActions'
+import { setMercadoPagoPreferences } from '../../redux/actions/mercadoPagoActions'
 
 class cart extends Component {
   render() {
@@ -41,12 +42,11 @@ class cart extends Component {
                 cartItems.reduce((a, c) => a + c.price * c.count, 0)
               )}
             </b>
-            <button className='btn btn-primary' onClick={()=> {if (this.props.isAuth)
-              //aca paso la accion que quiero validar por props
-             {}
-              else {window.alert('Debe Registrarse')
-              return}
-            }}>checkout</button>
+            <button className='btn btn-primary' onClick={()=> 
+              this.props.setMercadoPagoPreferences(this.props.cartItems)
+            }>checkout</button>
+            <div id='mercadoForm'>
+            </div>
           </div>
         )}
       </div>
@@ -59,7 +59,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ removeFromCart }, dispatch)
+  return bindActionCreators({ removeFromCart, setMercadoPagoPreferences }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(cart)

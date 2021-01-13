@@ -13,6 +13,7 @@ import Register from '../components/register/viewRegister'
 import Categorie from '../components/categories/viewPublicCategory'
 import ProductCategory from '../components/products/categoryProduct'
 import Cart from '../components/carts/viewCart'
+import Profile from '../components/profile/viewProfile'
 import store from '../redux/store'
 
 class Routes extends Component {
@@ -25,6 +26,7 @@ class Routes extends Component {
           <PrivateRoute exact path='/formProduct' component={FormProduct} />
           <PrivateRoute exact path='/modifiedProduct' component={ModifiedProduct} />
           <PrivateRoute exact path='/payment' component={Payment} />
+          <PrivateRoute exact path='/profile' component={Profile}/>
           <Route exact path='/categorie' component={Categorie}/>
           <Route exact path='/publicHome' component={PublicHome}/>
           <Route exact path='/publicProduct' component={PublicProduct}/>

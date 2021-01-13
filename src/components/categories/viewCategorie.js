@@ -46,7 +46,7 @@ class viewCategorie extends Component {
             </div>
           </div>
         </div>
-        <div className='row'>
+        <div className='row-categorie'>
           <div className='col-md-8'>
           </div>
           <div id='col-md-4'>

@@ -1,3 +1,4 @@
+import '../../styles/publicProduct.css'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -18,7 +19,7 @@ class viewPublicProduct extends Component {
         return (
           <div className='container'>
           <div className='header'>
-            <div className='title'>
+            <div className='tittle'>
               <h1 className='text1'>Artesanos</h1>
               <h1 className='text3'>Unidos</h1>
             </div>
@@ -50,7 +51,7 @@ class viewPublicProduct extends Component {
               </div>
             </div>
           </div>
-        <div className='row'>
+        <div className='row-product'>
           <div className='filter-product'>
               <Formik
               initialValues={{
@@ -76,7 +77,7 @@ class viewPublicProduct extends Component {
                 )}
               </Formik>
           </div>
-          <div className='col-md-8'>
+          <div className='product'>
             <Product/>
           </div>
         </div>

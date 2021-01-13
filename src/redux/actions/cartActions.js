@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from './types'
+import { ADD_TO_CART, REMOVE_FROM_CART, MERCADOPAGO_SUCCESS, MERCADOPAGO_PENDING , MERCADOPAGO_ERROR} from './types'
 
 // ADD TO CART METHOD
 export const addToCart = (items, product) => dispatch => {
@@ -20,6 +20,44 @@ export const addToCart = (items, product) => dispatch => {
         cartItems
       }
     })
+}
+
+// OTRA ACCION
+export const addToPayment = cartItems => {
+  return dispatch => {
+      dispatch({
+          type: MERCADOPAGO_PENDING
+      })
+      const options = {
+          timeout: 25000,
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(cartItems)
+      }
+      console.log('options', options)
+      return fetch('http://localhost:5000/api/mercadoPago', options)
+          .then( res => res.json())
+          .then( data => {
+              console.log('POST MERCADOPAGO', data)
+              if (!Object.entries(data).length) {
+                  return Promise.reject(data)
+              }
+              return dispatch({
+                  type: MERCADOPAGO_SUCCESS,
+                  payload: {
+                      product: data
+                  }
+              })
+          })
+          .catch( error => {
+              return dispatch ({
+                  type: MERCADOPAGO_ERROR,
+                  payload: error
+              })
+          })
+  }
 }
 
 //REMOVE FROM CART METHOD

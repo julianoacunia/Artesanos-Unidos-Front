@@ -5,6 +5,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { addToCart } from '../../redux/actions/cartActions'
 import { fetchProducts } from '../../redux/actions/productActions'
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 class publicProduct extends Component {
   componentDidMount() {
@@ -15,30 +23,34 @@ class publicProduct extends Component {
     this.props.products.filter(product => (product.category_name === this.props.categoryName)) : 
     this.props.products
     const productItems = filterProducts.map(product => (
-      <div className='product-container' key={product._id}>
-        <div className='thumbnail-text-center'>
-          <a 
-            className='name-product'
-            href={`#${product._id}`}
-            onClick={() => this.props.addToCart(this.props.cartItems, product)}
-          >
-            <img src='https://via.placeholder.com/150' alt='photo' />
-            <p id='name-product'>{product.tittle}</p>
-          </a>
-          <b>{util.formatCurrency(product.price)}</b>
-          
-          <button
-            className='btn btn-primary'
-            onClick={()=> {
+      <Card className='product-card'>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          height='140px'
+          image='https://via.placeholder.com/140' alt='photo'
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {product.tittle}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {util.formatCurrency(product.price)}  
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button onClick={()=> {
              {this.props.addToCart(this.props.cartItems, product)}
-            }}
-          >
-            Add to cart
-          </button>
-        </div>
-      </div>
+            }} size="small" color="primary">
+          Add to Cart
+        </Button>
+      </CardActions>
+    </Card>
     ))
-    return  <div className='row'>{productItems}</div>
+    return  <div className='product-paper'>{productItems}</div>
   }
 }
 

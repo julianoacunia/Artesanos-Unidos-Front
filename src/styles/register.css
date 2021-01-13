@@ -3,15 +3,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #353638;
     width: 100%;
     height: 475px;
+    background-color: rgb(236, 241, 229);
 }
 .register-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(235, 230, 230);
     width: 500px;
     height: 800px;
     margin-top: 25px;
@@ -96,4 +95,14 @@
 .redirect-p{
     color: #fff;
     font-size: 20px;
+}
+.register-card{
+    position: initial !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2) !important;
+}
+.dni{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start
 }

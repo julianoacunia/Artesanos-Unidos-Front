@@ -27,7 +27,7 @@ class login extends Component {
     return (
         <div className='container'>
         <div className='header'>
-        <div className='title'>
+        <div className='tittle'>
             <h1 className='text1'>Artesanos</h1>
             <h1 className='text3'>Unidos</h1>
           </div>

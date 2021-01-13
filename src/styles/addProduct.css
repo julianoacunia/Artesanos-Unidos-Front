@@ -1,0 +1,12 @@
+.root {
+    transform: translateZ(0px);
+    flex-grow: 1;
+}
+.exampleWrapper {
+    position: relative;
+    margin-top: 3 px;
+    height: 380px;
+}
+.radioGroup {
+    margin: 5px;
+}

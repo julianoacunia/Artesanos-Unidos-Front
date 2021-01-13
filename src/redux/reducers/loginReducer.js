@@ -15,6 +15,10 @@ const initialState = {
     isAuth: false,
     users: [],
     name: undefined,
+    lastName: undefined,
+    dni: undefined,
+    email: undefined,
+    password: undefined,
     error: null,
     isLoading: false,
     message: undefined,
@@ -35,7 +39,7 @@ export default function(state = initialState, action) {
             }
         case USER_LOGOUT:
             return {
-              state: initialState
+              ...initialState
             }
             case LOGIN_USER_PENDING:
                 return {
@@ -50,7 +54,11 @@ export default function(state = initialState, action) {
                 token: action.payload.token,
                 isAuth: true,
                 user: action.payload.user.name,
-                userId: action.payload.user._id
+                userId: action.payload.user._id,
+                userLastName: action.payload.user.lastName,
+                userDni: action.payload.user.dni,
+                userEmail: action.payload.user.email,
+                userPassword: action.payload.user.password
             }
         case LOGIN_USER_ERROR:
             return {

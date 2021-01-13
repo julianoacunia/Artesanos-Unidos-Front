@@ -6,29 +6,26 @@ import { postProduct, updateProduct } from '../../redux/actions/productActions'
 import { Link } from 'react-router-dom'
 import { isAuth, logOut} from '../../redux/actions/loginActions'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
-import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined'
-import { CSSTransition } from 'react-transition-group'
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 
 
 class privateHome extends Component {
-  constructor(props) {
+  constructor(props){
     super(props)
     this.state = {
-      anchorEl: null,
-      setAnchorEl: null
+      anchorEl: false
     }
   }
   handleClick = (event) => {
     this.setState({
-      setAnchorEl: event.currentTarget
+      anchorEl: true
     })
   }
   handleClose = () => {
     this.setState({
-      setAnchorEl:null
+      anchorEl: false
     })
   }
   capturarDatos() {
@@ -47,7 +44,7 @@ class privateHome extends Component {
     return (
       <div className='container'>
         <div className='header'>
-          <div className='title'>
+          <div className='tittle'>
             <h1>Artesanos Unidos</h1>
           </div>
           <div className='publicity'>
@@ -73,15 +70,15 @@ class privateHome extends Component {
             <AccountCircleOutlinedIcon  className='log-user'/>
           </Button>
           <Menu
-          id="simple-menu"
-          anchorEl={this.anchorEl}
-          keepMounted
-          open={Boolean(this.anchorEl)}
-          onClose={this.handleClose}
-          >
-            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-            <MenuItem onClick={this.handleClose}>My account</MenuItem>
-            <MenuItem onClick={this.props.logOut}>Logout</MenuItem>
+            id="simple-menu"
+            anchorEl={this.anchorEl}
+            keepMounted
+            open={this.state.anchorEl}
+            onClose={this.handleClose}
+            >
+              <MenuItem><Link className='menu-myprofile' to='/profile'>Mi Perfil</Link></MenuItem>
+              <MenuItem><Link className='menu-product' to='/privateProduct'>Mis Productos</Link></MenuItem>
+              <MenuItem><Link className='menu-logout' to='/login' onClick={this.props.logOut}>Logout</Link></MenuItem>
           </Menu>
           </div>
         </div>
@@ -96,67 +93,13 @@ class privateHome extends Component {
           </div>
         )}
         <hr />
-        <div className='row'>
+        <div className='row-privateHome'>
           <div className='categoriesPrivate'>
           </div>
         </div>
       </div>
     )
   }
-}
-function NavBar(props) {
-  return(
-    <nav className='navbar'>
-      <ul className='navbar-nav'>{props.children}</ul>
-    </nav>
-  )
-}
-function NavItem(props) {
-  const [open, setOpen] = useState(false)
-  return(
-    <li className='nav-item'>
-      <a className='icon-button' onClick={() => setOpen(!open)}>
-        {props.icon}
-      </a>
-      {open && props.children}
-    </li>
-  )
-}
-function DropDownMenu() {
-  const [activeMenu, setActiveMenu] = useState('main')
-  const [menuHeigth, setMenuHeight] = useState(null)
-  function calcHeight(el) {
-    const height = el.offsetHeight;
-    setMenuHeight(height)
-  }
-
-  function DropDownItem(props) { 
-    return(
-      <a href='#' className='menu-item' onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
-        <span className='icon-button'>{props.leftIcon}</span>
-        {props.children}
-    <span className='icon-right'>{props.rightIcon}</span>
-      </a>
-    )
-  }
-  return(
-    <div className='dropdown' style={{ height: menuHeigth}}>
-      <CSSTransition in={activeMenu === 'main'} unmountOnExit timeout={500} className='menu-primary' onEnter={calcHeight}>
-        <div className='menu'>
-          <DropDownItem  goToMenu='products'>Mis Productos</DropDownItem>
-          <DropDownItem>Cerrar Sesión</DropDownItem>
-        </div>
-      </CSSTransition>
-      <CSSTransition in={activeMenu === 'products'} unmountOnExit timeout={500} className='menu-secondary'>
-        <div className='menu'>
-          <DropDownItem leftIcon={<ArrowBackOutlinedIcon/>}  goToMenu='main'>Volver</DropDownItem>
-          <DropDownItem>Agregar Product</DropDownItem>
-          <DropDownItem>Modificar Producto</DropDownItem>
-        </div>
-      </CSSTransition>
-    </div>
-  )
-  
 }
 
 const mapStateToProps = state => {

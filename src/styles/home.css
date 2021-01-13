@@ -11,7 +11,7 @@
     width: 100%;
     height: 100px;
 }
-.title {
+.tittle {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -80,6 +80,7 @@
 .basketMenu {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 50px;
     height: 50px;
 }
@@ -132,6 +133,9 @@
 a { 
     text-decoration: none;
     color: #fff;
+}
+.cart-library{
+    color: #fff !important;
 }
 .adminsession {
     display: flex;
@@ -205,4 +209,24 @@ a {
 }
 .log-user{
     color: #fff;
+}
+.MuiPaper-root{
+    position: fixed;
+    top: 22% !important;
+    right: 1% !important;
+    left: auto !important;
+}
+.menu-product {
+    color: #000;
+}
+.menu-logout {
+    color: #000;
+}
+.menu-myprofile {
+    color: #000;
+}
+.row-privateHome {
+    display: flex;
+    width: 100%;
+    height: 475px;
 }

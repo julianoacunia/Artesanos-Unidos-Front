@@ -102,8 +102,8 @@ export default function ( state = initialState, action) {
         }
         case SET_SELECTED_PRODUCT_ID: {
             return {
-              ...state,
-              productSelected: action.payload
+            ...state,
+            productSelected: action.payload
             }
         }
         case SET_SELECTED_CATEGORY: {
@@ -114,9 +114,9 @@ export default function ( state = initialState, action) {
         }
         case ORDER_PRODUCTS_BY_PRICE: {
             return {
-              ...state,
-              sort: action.payload.sort,
-              items: action.payload.items
+            ...state,
+            sort: action.payload.sort,
+            items: action.payload.items
             }
         }
         default:

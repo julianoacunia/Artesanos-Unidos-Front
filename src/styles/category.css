@@ -29,7 +29,7 @@ p{
     margin: 15px;
     background: url('https://via.placeholder.com/200');
 }
-.row{
+.row-categorie{
     display: flex;
     flex-wrap: row;
     justify-content: center;
