@@ -16,22 +16,22 @@ const initialState = {
     categoryId: undefined
 }
 
-export default function ( state = initialState, action) {
-    switch(action.type) {
+export default function (state = initialState, action) {
+    switch (action.type) {
         case FETCH_CATEGORIES:
-        return {
-            ...state,
-            items: action.payload,
-            category_name: action.payload.name
-        }
+            return {
+                ...state,
+                items: action.payload,
+                category_name: action.payload.name
+            }
         case ADD_CATEGORIE_PENDING:
-        return {
-            ...state,
-            isLoading: true
-        }
+            return {
+                ...state,
+                isLoading: true
+            }
         case ADD_CATEGORIE_SUCCESS: {
-        const newCategorie = action.payload.categorie.data
-        const categories =  [...state.items, newCategorie]
+            const newCategorie = action.payload.categorie.data
+            const categories = [...state.items, newCategorie]
             return {
                 ...state,
                 isLoading: false,
@@ -39,36 +39,35 @@ export default function ( state = initialState, action) {
             }
         }
         case ADD_CATEGORIE_ERROR:
-        return {
-            ...state,
-            isLoading: false,
-            error: action.error,
-            message: action.payload.message
-        }
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error,
+                message: action.payload.message
+            }
         case DELETE_CATEGORIE_PENDING:
-        return {
-            ...state,
-            isLoading: true
-        }
+            return {
+                ...state,
+                isLoading: true
+            }
         case DELETE_CATEGORIE_SUCCESS:
-        console.log(action.payload)
-        const newCategorie = [...state.items]
-        const categorieToDelete = newCategorie.findIndex(
-            ele => ele._id === action.payload._id
-        )
-        newCategorie.splice(categorieToDelete, 1)
-        return {
-            ...state,
-            isLoading: false,
-            items: newCategorie
-        }
+            const newCategorie = [...state.items]
+            const categorieToDelete = newCategorie.findIndex(
+                ele => ele._id === action.payload._id
+            )
+            newCategorie.splice(categorieToDelete, 1)
+            return {
+                ...state,
+                isLoading: false,
+                items: newCategorie
+            }
         case DELETE_CATEGORIE_ERROR:
-        return {
-            ...state,
-            isLoading: false,
-            message: action.payload.message
-        }
+            return {
+                ...state,
+                isLoading: false,
+                message: action.payload.message
+            }
         default:
-        return state
+            return state
     }
 }

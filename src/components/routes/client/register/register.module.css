@@ -1,0 +1,107 @@
+.mainRegister{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(236, 241, 229);
+  flex: 1;
+}
+.registerContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+.titleP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+#inputUser {
+  margin: 5px;
+  width: 125px;
+  height: 30px;
+  font-size: 18px;
+  padding-left: 6px;
+}
+#inputLastName {
+  margin: 5px;
+  width: 125px;
+  height: 30px;
+  font-size: 18px;
+  margin-left: 60px;
+  padding-left: 6px;
+}
+#inputEmailRegister {
+  margin: 5px;
+  width: 331px;
+  height: 30px;
+  font-size: 18px;
+  padding-left: 6px;
+  margin-bottom: 15px;
+}
+
+#inputPasswordRegister {
+  margin: 5px;
+  width: 331px;
+  height: 30px;
+  font-size: 18px;
+  padding-left: 6px;
+  margin-bottom: 15px;
+}
+#proveedorRadio{
+  margin-right: 100px;
+}
+#submitButton {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: .25rem;
+  width: 331px;
+  height: 30px;
+  margin: 5px;
+}
+.nameLastName{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.rdForm {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.link{
+  display: flex;
+  flex-direction: row;
+}
+#redirectLogin{
+  margin-left: 5px;
+  font-size: 20px;
+}
+.redirectP{
+  color: #fff;
+  font-size: 20px;
+}
+.registerCard{
+  position: initial !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2) !important;
+}
+.dni{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start
+}

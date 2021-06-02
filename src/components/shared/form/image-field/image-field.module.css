@@ -1,0 +1,43 @@
+.container {
+  position: relative;
+}
+
+.containerPreview {
+  position: relative;
+  background-color: var(--color-lightgrey);
+  height: 131px;
+  width: 145px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5px;
+}
+
+.input {
+  display: none;
+}
+
+.imagePreview {
+  object-fit: contain;
+  height: 131px;
+  width: 145px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.error {
+  color: var(--color-red) !important;
+}
+
+.imageFieldGroupError {
+  height: 25px;
+  text-align: left;
+  color: var(--color-red);
+  font-size: 13px;
+  margin-top: 5px;
+}

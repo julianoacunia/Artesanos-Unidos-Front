@@ -1,0 +1,25 @@
+.textFieldGroup {
+  height: 80px;
+  width: 100%;
+  position: relative;
+}
+
+.textFieldGroupError {
+  height: 25px;
+  text-align: left;
+  color: var(--color-red);
+  font-size: 13px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.quantityInput {
+  min-height: 80px !important;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: 1px;
+  right: 0;
+}

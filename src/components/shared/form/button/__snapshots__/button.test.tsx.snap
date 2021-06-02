@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button should match snapshot and styles 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained button submitButton"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  test-id="test"
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    test
+  </span>
+</button>
+`;

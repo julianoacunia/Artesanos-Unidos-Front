@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 100%;
+}
+
+.fabButtonContainer {
+	/* display: flex;
+	justify-content: flex-end;
+	margin-top: 10px; */
+}
+
+.mainTitle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.fabButton {
+	/* background-color: var(--color-primary) !important;
+	color: var(--color-white) !important; */
+}
+
+.pageDivider {
+	border-style: inset;
+	border-width: 0.5px;
+	margin-bottom: 20px;
+	border-color: lightgray;
+}
+
+.containerPaper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}

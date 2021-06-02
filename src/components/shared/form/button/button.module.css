@@ -1,0 +1,35 @@
+.button {
+  min-width: 120px;
+  min-height: 46px;
+  border-radius: 8px !important;
+  text-transform: capitalize !important;
+}
+
+.squaredButton {
+  min-width: 120px;
+  min-height: 20px;
+}
+
+.submitButton {
+  background-color:var(--color-primary) !important;
+  color: var(--color-white) !important;
+  font-family: 'WorkSans-SemiBold' !important;
+  font-size: 16px !important;
+}
+
+.cancelButton {
+  background-color: var(--color-grey) !important;
+  color: var(--color-black) !important;
+}
+
+.disabledButton {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.validateButton {
+  background-color: var(--color-whatsApp) !important;
+  color: var(--color-white) !important;
+  font-size: 16px !important;
+  font-family: 'WorkSans-SemiBold' !important;
+}
