@@ -16,11 +16,16 @@ class login extends Component {
   //COMPARE VALUES WITH DATABASE
   getLogin = values => {
     this.props.loginAccount(values).then(response => {
-      if (this.props.isAuth) {
-        this.props.history.push('/privateHome')
+      if (response.payload.user.category === 'admin') {
+        console.log('ENTRE AL IF')
+        return this.props.history.push('/admin');
+      } else {
+        console.log('ENTRE AL SEGUNDO IF')
+        return this.props.history.push('/');
       }
     })
   }
+
   render() {
     return (
       <div className={css.loginContainer}>
@@ -85,7 +90,6 @@ const mapStateToProps = (state, ownProps) => {
     users: state.users,
     isLoading: state.users.isLoading,
     isAuth: state.users.isAuth,
-    isAdmin: state.users.isAdmin,
     failedLogin: state.users.failedLogin,
     AlertMessege: state.users.AlertMessege
   }

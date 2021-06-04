@@ -24,7 +24,7 @@ const ellipsisStyles: React.CSSProperties = {
 const cols: any[] = [
   {
     title: 'Nombre',
-    field: 'tittle',
+    field: 'title',
     cellStyle: ellipsisStyles,
   },
   {

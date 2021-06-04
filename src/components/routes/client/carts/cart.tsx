@@ -2,17 +2,24 @@ import React, { useEffect } from 'react'
 import util from '../../../../helpers/utils'
 import css from './cart.module.css';
 import { ReduxProps } from './';
+import { useHistory } from 'react-router-dom';
 
 const Cart: React.FC<ReduxProps> = (props) => {
   const {
     cartItems,
     removeFromCart,
     setMercadoPagoPreferences,
+    isAuth,
   } = props;
 
   useEffect(() => {
-    setMercadoPagoPreferences(cartItems);
+    if (isAuth) {
+      setMercadoPagoPreferences(cartItems);
+
+    }
   }, [setMercadoPagoPreferences, cartItems]);
+
+  const history = useHistory();
 
   return (
     <div className={css.container}>
@@ -27,7 +34,7 @@ const Cart: React.FC<ReduxProps> = (props) => {
             <ul>
               {cartItems.map((item: any) => (
                 <li key={item.id}>
-                  <b>{item.tittle}</b>
+                  <b>{item.title}</b>
                   <button
                     style={{ float: 'right' }}
                     className={css.btnDanger}
@@ -45,8 +52,12 @@ const Cart: React.FC<ReduxProps> = (props) => {
                 cartItems.reduce((a: any, c: any) => a + c.price * c.count, 0)
               )}
             </b>
-            <div id='mercadoForm'>
-            </div>
+            {isAuth ?
+              <div id='mercadoForm'>
+              </div>
+              :
+              <button onClick={() => history.push('/login')}>Iniciar sesión</button>
+            }
           </div>
         )}
       </div>

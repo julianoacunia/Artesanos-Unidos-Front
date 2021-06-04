@@ -1,0 +1,18 @@
+.formControl {
+  height: 80px;
+  width: 100%;
+  text-align: start !important;
+}
+
+.textFieldGroupError {
+  height: 25px;
+  text-align: left;
+  color: var(--color-red);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.input {
+  font-size: 13px;
+  margin: 0px !important;
+}

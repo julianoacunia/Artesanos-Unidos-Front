@@ -15,7 +15,7 @@ import { fetchCategories } from '../../../../redux/actions/categorieActions'
 import { isAuth, logOut } from '../../../../redux/actions/loginActions'
 import { makeFileName } from '../../../../helpers/utils';
 import saveFile from '../../../../helpers/form/saveFile';
-import { getSelectedProductById } from '../../../../redux/actions/selectors';
+import { getSelectedProductById, getCategoriesAsOptions } from '../../../../redux/actions/selectors';
 import {
   UPDATE_PRODUCT_ERROR,
   UPDATE_PRODUCT_SUCCESS,
@@ -70,7 +70,7 @@ const mapStateToProps = (state: any, ownProps: OwnProps) => {
     initialValues,
     isFetching: state.products.isLoading,
     title: get(ownProps, 'history.location.state.title', ''),
-    categoryList: state.categories.items,
+    categoryList: getCategoriesAsOptions(state),
   };
 };
 
@@ -102,24 +102,9 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) =>
   }, dispatch);
 
 const onSubmit = async (values: ProductValues, dispatch: any, props: ReduxProps) => {
-  // const imageValue = get(values, `image1.file`);
-  // const isNew = get(values, `image1.isNew`);
-  // const attributesValues = get(values, 'categoryAttributes');
-
-  // let image1;
-  // if (imageValue && isNew) {
-  //   const imageFile: any = await saveFile.toBase64(imageValue);
-  //   if (imageFile) {
-  //     image1 = {
-  //       base64: imageFile,
-  //       name: makeFileName(imageValue.name),
-  //       type: imageValue.type,
-  //       isNew: true,
-  //     };
-  //   }
-  // }
   try {
     let response: any;
+
     const addPayload = {
       title: values.title,
       description: values.description,
@@ -128,14 +113,16 @@ const onSubmit = async (values: ProductValues, dispatch: any, props: ReduxProps)
       img: values.img,
       categoryName: values.categoryName,
     };
-    console.log('ADD PAYLOAD', addPayload);
+
     if (props.isEditing) {
       const changedValues: Partial<ProductValues> = diff(props.initialValues, values);
       const payload = {
-        id: props.selectedProduct && props.selectedProduct.id,
+        _id: props.selectedProduct && props.selectedProduct._id,
         ...changedValues,
       };
+
       response = await props.updateProduct(payload);
+
     } else {
       response = await props.postProduct(addPayload);
     }

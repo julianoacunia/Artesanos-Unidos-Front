@@ -34,13 +34,15 @@ class publicProduct extends Component {
         <CardActionArea>
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
-            height='140px'
-            title="Contemplative Reptile"
+            image={`http://localhost:5000/${product.img}`}
+            alt={product.title}
+            height='170px'
+            title={product.title}
           />
+          {/* <img src={`http://localhost:5000/${product.img}`} /> */}
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {product.tittle}
+              {product.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {util.formatCurrency(product.price)}

@@ -36,7 +36,7 @@ class register extends Component {
             </div>
             <Card className={css.registerCard}>
               <Formik
-                initialValues={{ name: '', lastName: '', dni: '', email: '', password: '', roles: 'artesano' }}
+                initialValues={{ name: '', lastName: '', dni: '', email: '', password: '', category: 'client' }}
                 onSubmit={values => {
                   this.props.postUser(values).then(res => {
                     if (res.type === 'ADD_USER_SUCCESS') {
@@ -63,9 +63,9 @@ class register extends Component {
                     </div>
                     <div className={css.rdForm}>
                       <label>Proveedor:</label>
-                      <Field type='radio' name='roles' id={css.proveedorRadio} value={'proveedor'} />
+                      <Field type='radio' name='category' id={css.proveedorRadio} value={'admin'} />
                       <label>Artesano:</label>
-                      <Field type='radio' name='roles' id={css.artesanoRadio} value={'artesano'} />
+                      <Field type='radio' name='category' id={css.artesanoRadio} value={'client'} />
                     </div>
                     <div className={css.registerButtons}>
                       {!this.props.isLoading ? (

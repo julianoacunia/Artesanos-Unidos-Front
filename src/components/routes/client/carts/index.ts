@@ -6,11 +6,13 @@ import { setMercadoPagoPreferences } from '../../../../redux/actions/mercadoPago
 
 export interface StateProps {
   cartItems: any;
+  isAuth: boolean;
 }
 
 const mapStateToProps = (state: any) => {
   return {
     cartItems: state.cart.items,
+    isAuth: state.users.isAuth,
   }
 }
 

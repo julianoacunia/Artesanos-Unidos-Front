@@ -9,6 +9,7 @@ import {
   ADD_USER_SUCCESS,
   ADD_USER_ERROR
 } from './types'
+import axios from 'axios';
 
 //LOGIN USER ACCOUNT
 export const loginAccount = data => {
@@ -24,7 +25,7 @@ export const loginAccount = data => {
       },
       body: JSON.stringify(data)
     }
-    return fetch('http://localhost:5000/api/auth/signIn', options)
+    return fetch('http://localhost:5000/api/users/signIn', options)
       .then(res => res.json())
       .then(res => {
         if (res.msg !== 'Invalid Email or password') {
@@ -80,7 +81,7 @@ export const postUser = user => {
       },
       body: JSON.stringify(user)
     }
-    return fetch(`http://localhost:5000/api/auth/signUp`, options)
+    return fetch(`http://localhost:5000/api/users/`, options)
       .then(res => res.json())
       .then(data => {
         if (!Object.entries(data).length) {
@@ -100,4 +101,15 @@ export const postUser = user => {
         })
       })
   }
+}
+
+export const auth = () => {
+  const request = axios
+    .get('http://localhost:5000/users/auth')
+    .then((response) => response.data);
+
+  return {
+    type: IS_AUTH,
+    payload: request,
+  };
 }

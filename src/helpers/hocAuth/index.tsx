@@ -3,7 +3,7 @@ import { logOut as logoutAction } from '../../redux/actions/loginActions';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
-import { Category } from '../../enums/index'
+// import { Category } from '../../enums/index'
 
 interface Props extends RouteComponentProps {
   authenticated: any;
@@ -23,12 +23,15 @@ const CheckAuthHOC = (
       if (!authenticated) {
         logout();
         history.push('/');
-      } else if (user && user.category !== allowCategory) {
-        history.push('/');
-      } else if (allowCategory === Category.ADMIN) {
+      }
+      // else if (user && user.category !== allowCategory) {
+      //   console.log('ENTRE AL SEGUNDO IF', allowCategory);
+      //   history.push('/');
+      // }
+      else if (user && user.category === 'admin') {
         history.push('/admin');
-      } else if (allowCategory === Category.CLIENT) {
-        history.push('/client');
+      } else if (user && user.category === 'client') {
+        history.push('/');
       }
     }, [authenticated, user, history, logout]);
 
@@ -41,8 +44,8 @@ const CheckAuthHOC = (
   };
 
   const mapStateToProps = (state: any) => ({
-    authenticated: state.auth.authenticated,
-    user: state.auth.user,
+    authenticated: state.users.isAuth,
+    user: state.users.user,
   });
 
   const mapDispatchToProps = (dispatch: Dispatch<any>) =>

@@ -2,34 +2,34 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import { ApmRoute } from '@elastic/apm-rum-react';
 import { connect } from 'react-redux'
-// import CheckAuthHOC from '../../helpers/hocAuth/index';
+import CheckAuthHOC from '../../helpers/hocAuth/index';
+import withTracker from '../../helpers/analytics/withTracker';
 // import { Category } from '../../enums'
 
 const ProviderRoutes = lazy(() => import('../routes/provider'));
 const ClientRoutes = lazy(() => import('../routes/client'));
 
-// const checkClient = (Comp: React.ComponentType<any>) => {
-//   return CheckAuthHOC(Comp, Category.CLIENT);
-// };
+const checkAdmin = (Comp: React.ComponentType<any>) => {
+  return CheckAuthHOC(Comp, 'admin');
+};
+
+const checkClient = (Comp: React.ComponentType<any>) => {
+  return CheckAuthHOC(Comp, 'client');
+};
 
 const Routes: React.FC<{}> = (props: any) => {
-  const { userRole } = props;
 
   return (
     <Router>
       <Suspense fallback={<div />}>
         <Switch>
-          {/* <ApmRoute path="/" component={ClientRoutes} /> */}
-          <ApmRoute path="/" component={ProviderRoutes} />
-          <Redirect to="/" />
+          <ApmRoute path='/' component={checkClient(ClientRoutes)} />
+          <ApmRoute path='/admin' component={checkAdmin(ProviderRoutes)} />
+          <Redirect to='/' />
         </Switch>
       </Suspense>
     </Router>
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  // userRole: state.user.user,
-})
-
-export default connect(mapStateToProps, undefined)(Routes);
+export default connect()(Routes);

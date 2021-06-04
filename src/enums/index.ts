@@ -1,6 +1,6 @@
 export enum Category {
   ADMIN = 'admin',
-  CLIENT = 'artesano',
+  CLIENT = 'client',
 }
 
 export enum FormMode {
