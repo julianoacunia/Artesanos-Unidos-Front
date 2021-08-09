@@ -41,7 +41,6 @@
 .logged {
   display: flex;
   flex-direction: row;
-  width: 100%;
   height: 50px;
   background-color: #20232a;
 }
@@ -184,6 +183,7 @@ a {
   width: 100px;
   margin: 5px;
 }
+
 .btn-body-r{
   color: #fff;
   background-color: #007bff;
@@ -209,22 +209,30 @@ a {
   color: #fff;
   font-family: Helvetica;
 }
-.log-user{
+.logUser{
   color: #fff;
 }
-.MuiPaper-root{
+
+#userMenu{
   position: fixed;
-  top: 22% !important;
-  right: 1% !important;
-  left: auto !important;
+  top: 10px !important;
+  /* right: 1% !important; */
+  /* left: 1% !important; */
+
+  /* opacity: 1;
+  transform: none; */
+  /* top: 150px !important; */
+  /* left: 16px;
+  transform-origin: -16px 26px; */
 }
-.menu-product {
+
+.menuProduct {
   color: #000;
 }
-.menu-logout {
+.menuLogout {
   color: #000;
 }
-.menu-myprofile {
+.menuMyProfile {
   color: #000;
 }
 .row-privateHome {
@@ -235,12 +243,20 @@ a {
 
 .logged {
   display: flex;
-  justify-content: center;
-  align-items: center;
   color: white;
 }
 
 .buttonCart {
   background-color: #20232a;
   border: none;
+}
+
+.userOptions {
+  position: fixed !important;
+  top: 20px !important;
+}
+
+.loggedOptions {
+  display: flex;
+  align-items: center;
 }

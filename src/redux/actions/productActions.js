@@ -15,7 +15,7 @@ import {
 } from './types'
 import store from '../store'
 
-// FETCH PRODUCTS 
+// FETCH PRODUCTS
 export const fetchProducts = () => dispatch => {
   fetch('http://localhost:5000/api/products')
     .then(res => res.json())
@@ -24,21 +24,21 @@ export const fetchProducts = () => dispatch => {
     })
 }
 
-export const fetchProductById = (userId) => dispatch => {
-  fetch(`http://localhost:5000/api/products/${userId}`)
+export const getProductByProviderId = (providerId) => dispatch => {
+  fetch(`http://localhost:5000/api/products/${providerId}`)
     .then(res => res.json())
     .then(data => {
       return dispatch({ type: FETCH_PRODUCTS, payload: data })
     })
 }
 
-export const fetchProductByNameCategory = (categoryId) => dispatch => {
-  fetch(`http://localhost:5000/api/products/${categoryId}`)
-    .then(res => res.json())
-    .then(data => {
-      return dispatch({ type: FETCH_PRODUCTS, payload: data })
-    })
-}
+// export const fetchProductByNameCategory = (categoryId) => dispatch => {
+//   fetch(`http://localhost:5000/api/products/${categoryId}`)
+//     .then(res => res.json())
+//     .then(data => {
+//       return dispatch({ type: FETCH_PRODUCTS, payload: data })
+//     })
+// }
 
 // POST PRODUCTS ESTO ES UN THUNK
 export const postProduct = product => {

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import css from './category.module.css';
+import { ReduxProps } from '.'
 
-const Category = () => {
-
+const Category: React.FC<ReduxProps> = (props) => {
+  const { isAuth } = props;
   return (
     <>
       <div className={css.body}>
@@ -14,9 +15,11 @@ const Category = () => {
         <div className={css.btnBody}>
           <Link to='/publicProduct'>Empezar</Link>
         </div>
-        <div className={css.btnBodyR}>
-          <Link to='/register'>Registrarse</Link>
-        </div>
+        {!isAuth &&
+          <div className={css.btnBodyR}>
+            <Link to='/register'>Registrarse</Link>
+          </div>
+        }
       </div>
     </>
   )

@@ -20,15 +20,15 @@ const ProviderLayout: React.FC<ReduxProps> = (props) => {
     return (
       <>
         <button
-          onClick={() => history.push('/provider/products')}
-          disabled={location.pathname === '/profile/my-order'}
+          onClick={() => history.push('/admin/products')}
+          disabled={location.pathname === '/admin/products'}
           className={css.routes}
         >
           Productos
       </button>
         <button
-          onClick={() => history.push('/profile/my-order')}
-          disabled={location.pathname === '/profile/my-order'}
+          onClick={() => history.push('/admin/orders')}
+          disabled={location.pathname === '/admin/orders'}
           className={css.routes}
         >
           Ventas
@@ -49,33 +49,6 @@ const ProviderLayout: React.FC<ReduxProps> = (props) => {
       </>
     );
   }, [logOut, history, location]);
-
-  // const options = React.useMemo(() => {
-  //   const list = [
-  //     {
-  //       title: 'Productos',
-  //       onClick: () => history.push('/provider/products'),
-  //       disabled: location.pathname === '/profile/my-order',
-  //     },
-  //     {
-  //       title: 'Ventas',
-  //       onClick: () => history.push('/provider/products'),
-  //       disabled: location.pathname === '/profile/my-order',
-  //     },
-  //     {
-  //       title: 'Categorías',
-  //       onClick: () => history.push('/provider/products'),
-  //       disabled: location.pathname === '/profile/my-order',
-  //     },
-  //     {
-  //       title: 'Cerrar sesión',
-  //       onClick: () => history.push('/provider/products'),
-  //       disabled: location.pathname === '/profile/my-order',
-  //     },
-  //   ];
-  //   return list;
-  // }, [logOut, history, location]);
-
 
   return (
     <div className={css.pageContainer}>

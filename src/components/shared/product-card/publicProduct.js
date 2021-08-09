@@ -12,6 +12,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import css from './product.module.css'
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 
 class publicProduct extends Component {
   componentDidMount() {
@@ -19,16 +20,9 @@ class publicProduct extends Component {
   }
 
   render() {
-    // const verifyAuth = (items, product) => {
-    //   if (this.props.isAuth) {
-    //     this.props.addToCart(this.props.cartItems, product)
-    //   } else {
-    //   }
-    // }
-
     const filterProducts = this.props.categoryName !== 'TODOS' ?
       this.props.products.filter(product => (product.category_name === this.props.categoryName)) :
-      this.props.products
+      this.props.products;
     const productItems = filterProducts.map(product => (
       <Card className={css.productCard}>
         <CardActionArea>
@@ -39,9 +33,8 @@ class publicProduct extends Component {
             height='170px'
             title={product.title}
           />
-          {/* <img src={`http://localhost:5000/${product.img}`} /> */}
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="body2" component="p">
               {product.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -54,7 +47,7 @@ class publicProduct extends Component {
             onClick={() => this.props.addToCart(this.props.cartItems, product)}
             size="small"
             color="primary">
-            Add to Cart
+            Agregar al carrito
           </Button>
         </CardActions>
       </Card>

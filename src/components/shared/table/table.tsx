@@ -9,10 +9,11 @@ import MaterialTable, {
   MaterialTableProps,
 } from 'material-table';
 import moment from 'moment';
-// import { getColor } from 'src/helpers/utils';
+import { getColor } from '../../../helpers/utils';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 import { ColumnTypes } from '.';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 
 type MyLocalization = Localization & {
   body: {
@@ -72,7 +73,7 @@ const defaultLocalization = {
 
 const defaultOptions = {
   headerStyle: {
-    backgroundColor: '#fff',
+    backgroundColor: getColor('--color-white'),
     fontWeight: 600,
   },
   actionsCellStyle: {
@@ -85,8 +86,8 @@ const defaultOptions = {
   actionsColumnIndex: -1,
   rowStyle: (rowData: RowData) => ({
     backgroundColor: (rowData.hasOwnProperty('isActive') && !rowData.isActive)
-      ? '#fff'
-      : '#fff'
+      ? getColor('--color-lightgrey')
+      : getColor('--color-white')
   }),
 };
 
@@ -140,6 +141,7 @@ export const Table: React.FC<Props> = (props) => {
         title={' '}
         // make a copy of defaultOptions to prevent mutations
         options={merge({ ...defaultOptions }, props.options)}
+
         actions={props.showActions ? props.actions : undefined}
         editable={props.showActions ? props.editable : undefined}
         components={{

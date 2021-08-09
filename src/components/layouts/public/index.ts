@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);
-export type ReduxProps = StateProps;
+export type ReduxProps = StateProps & DispatchProps;

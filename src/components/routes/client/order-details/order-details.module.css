@@ -1,0 +1,30 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.title {
+	font-size: 30px;
+  color: var(--color-white);
+}
+
+.paper {
+	width: 80%;
+	padding: 20px;
+	height: calc(400px - 20px);
+  margin-bottom: 20px;
+}
+
+.formContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.orderDates {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}

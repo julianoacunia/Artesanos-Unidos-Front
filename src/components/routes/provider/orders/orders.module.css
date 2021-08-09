@@ -1,0 +1,33 @@
+.container {
+	display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mainTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  width: calc(100% - 50px);
+  font-size: 20px;
+}
+
+.pageDivider {
+	border-style: inset;
+	border-width: 0.5px;
+	margin-bottom: 20px;
+	border-color: lightgray;
+}
+
+.containerPaper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.paper {
+  width: 80%;
+}

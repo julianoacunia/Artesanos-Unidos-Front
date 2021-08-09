@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import moment from 'moment';
 import Paper from '@material-ui/core/Paper';
 import Table from '../../../shared/table';
@@ -43,15 +43,21 @@ const Product: React.FC<ReduxProps> = (props) => {
 
   const {
     // showModal,
-    fetchProducts,
+    getProductByProviderId,
     deleteProduct,
+    fetchProducts,
+    user,
   } = props;
 
   const history = useHistory();
 
   useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+    getProductByProviderId(user._id);
+  }, [getProductByProviderId]);
+
+  const getProducts = useCallback(() => {
+    getProductByProviderId(user._id);
+  }, [getProductByProviderId]);
 
   const handleDeleteBrand = async (productId: string) => {
     const response: any = await deleteProduct(productId);
@@ -70,64 +76,65 @@ const Product: React.FC<ReduxProps> = (props) => {
       <div className={css.container}>
         <div className={css.mainTitle}>
           <div test-id="title-brand-page">
-            Marcas
+            Productos
 		      </div>
           <RefreshButton
-            onClick={fetchProducts}
+            onClick={() => getProducts}
             disabled={props.isFetching}
           />
         </div>
         <div className={css.pageDivider} />
         <div className={css.containerPaper}>
-          <Paper>
-            <Table
-              columns={cols}
-              data={props.products}
-              loading={props.isFetching}
-              options={{
-                exportButton: true,
-                exportAllData: true,
-                exportFileName: `Brands ${moment().format('YYYY-MM-DD')}`,
-              }}
-              onRowClick={(event, rowData: any) => {
-                history.push(`/admin/product/${rowData._id}`, {
-                  mode: FormMode.VIEW,
-                  title: 'Detalle Marca'
-                });
-              }}
-              actions={
-                [
-                  (rowData: any) => {
-                    return {
-                      icon: 'edit',
-                      tooltip: 'Editar',
-                      onClick: (event, rowData: any) => {
-                        history.push(`/admin/product/${rowData.id}`, {
-                          mode: FormMode.EDIT,
-                          title: 'Editar Marca',
-                        });
-                      }
-                    };
-                  },
-                  (rowData: any) => {
-                    return {
-                      icon: 'delete',
-                      tooltip: 'Eliminar',
-                      onClick: (event, rowData: any) => {
-                        // showModal(
-                        //   ModalKey.CONFIRM_MODAL,
-                        //   {
-                        //     onConfirmCallback: () => { handleDeleteBrand(rowData.id); },
-                        //     message: `¿Estás seguro que deseas eliminar la marca "${rowData.name}"?`
-                        //   });
-                      }
-                    };
-                  }
-                ]
-              }
-            />
-          </Paper>
-
+          <div className={css.paper}>
+            <Paper>
+              <Table
+                columns={cols}
+                data={props.products}
+                loading={props.isFetching}
+                options={{
+                  exportButton: true,
+                  exportAllData: true,
+                  exportFileName: `Brands ${moment().format('YYYY-MM-DD')}`,
+                }}
+                onRowClick={(event, rowData: any) => {
+                  history.push(`/admin/product/${rowData._id}`, {
+                    mode: FormMode.VIEW,
+                    title: 'Detalle Marca'
+                  });
+                }}
+                actions={
+                  [
+                    (rowData: any) => {
+                      return {
+                        icon: 'edit',
+                        tooltip: 'Editar',
+                        onClick: (event, rowData: any) => {
+                          history.push(`/admin/product/${rowData.id}`, {
+                            mode: FormMode.EDIT,
+                            title: 'Editar Marca',
+                          });
+                        }
+                      };
+                    },
+                    (rowData: any) => {
+                      return {
+                        icon: 'delete',
+                        tooltip: 'Eliminar',
+                        onClick: (event, rowData: any) => {
+                          // showModal(
+                          //   ModalKey.CONFIRM_MODAL,
+                          //   {
+                          //     onConfirmCallback: () => { handleDeleteBrand(rowData.id); },
+                          //     message: `¿Estás seguro que deseas eliminar la marca "${rowData.name}"?`
+                          //   });
+                        }
+                      };
+                    }
+                  ]
+                }
+              />
+            </Paper>
+          </div>
         </div>
         <div className={css.fabButtonContainer} >
           <Fab

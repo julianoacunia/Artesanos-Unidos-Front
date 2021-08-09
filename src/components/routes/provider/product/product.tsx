@@ -16,11 +16,14 @@ const FormProduct: React.FC<ReduxProps> = (props) => {
     fetchCategories,
     categoryList,
     handleSubmit,
+    getProductByProviderId,
+    user,
   } = props;
 
   useEffect(() => {
     fetchCategories();
-  }, [fetchCategories]);
+    getProductByProviderId(user._id);
+  }, [fetchCategories, getProductByProviderId]);
 
   const history = useHistory();
 

@@ -18,7 +18,7 @@ class login extends Component {
     this.props.loginAccount(values).then(response => {
       if (response.payload.user.category === 'admin') {
         console.log('ENTRE AL IF')
-        return this.props.history.push('/admin');
+        return this.props.history.push('/admin/products');
       } else {
         console.log('ENTRE AL SEGUNDO IF')
         return this.props.history.push('/');

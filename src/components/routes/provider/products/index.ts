@@ -7,28 +7,32 @@ import { bindActionCreators, Dispatch } from 'redux';
 // import { getBrands, logicDeleteBrand } from 'src/redux/modules/brand/thunks';
 // import { ModulePermissions } from 'src/redux/modules/admin/types';
 // import { AdminPermissions } from 'src/enums';
-import { fetchProducts, deleteProduct } from '../../../../redux/actions/productActions';
+import { fetchProducts, getProductByProviderId, deleteProduct } from '../../../../redux/actions/productActions';
 
 export interface StateProps {
   isFetching: any;
   products: any;
+  user: any;
 }
 
 export interface DispatchProps {
-  fetchProducts: typeof fetchProducts;
+  getProductByProviderId: typeof getProductByProviderId;
   deleteProduct: typeof deleteProduct;
+  fetchProducts: typeof fetchProducts;
   //showModal
 }
 
 const mapStateToProps = (state: any) => ({
   isFetching: state.products.isLoading,
   products: state.products.items,
+  user: state.users.user,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators({
-    fetchProducts,
+    getProductByProviderId,
     deleteProduct,
+    fetchProducts,
     // showModal,
   }, dispatch);
 

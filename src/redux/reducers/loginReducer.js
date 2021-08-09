@@ -49,6 +49,7 @@ export default function (state = initialState, action) {
         failedLogin: false
       }
     case LOGIN_USER_SUCCESS:
+      console.log("LOGIN_USER_SUCCESS", action)
       return {
         ...state,
         isLoading: false,

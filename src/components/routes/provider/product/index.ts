@@ -7,7 +7,7 @@ import {
   InjectedFormProps,
 } from 'redux-form';
 import { FormNames, FormMode } from '../../../../enums';
-import { fetchProducts, postProduct, updateProduct } from '../../../../redux/actions/productActions';
+import { getProductByProviderId, postProduct, updateProduct } from '../../../../redux/actions/productActions';
 import get from 'lodash/get';
 import Component from './product';
 import diff from 'object-diff';
@@ -49,6 +49,7 @@ interface StateProps {
   readonly initialValues?: ProductValues;
   readonly selectedProduct: any;
   readonly categoryList: any;
+  readonly user: any;
 }
 
 const mapStateToProps = (state: any, ownProps: OwnProps) => {
@@ -71,6 +72,7 @@ const mapStateToProps = (state: any, ownProps: OwnProps) => {
     isFetching: state.products.isLoading,
     title: get(ownProps, 'history.location.state.title', ''),
     categoryList: getCategoriesAsOptions(state),
+    user: state.users.user,
   };
 };
 
@@ -80,7 +82,7 @@ interface DispatchProps {
   isAuth: typeof isAuth;
   logOut: typeof logOut;
   updateProduct: typeof updateProduct;
-  fetchProducts: typeof fetchProducts;
+  getProductByProviderId: typeof getProductByProviderId;
 }
 
 interface OwnProps {
@@ -98,7 +100,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) =>
     isAuth,
     logOut,
     updateProduct,
-    fetchProducts,
+    getProductByProviderId,
   }, dispatch);
 
 const onSubmit = async (values: ProductValues, dispatch: any, props: ReduxProps) => {
@@ -112,8 +114,9 @@ const onSubmit = async (values: ProductValues, dispatch: any, props: ReduxProps)
       stock: values.stock,
       img: values.img,
       categoryName: values.categoryName,
+      providerId: props.user._id,
     };
-
+    console.log('ADD PAYLOAD', addPayload);
     if (props.isEditing) {
       const changedValues: Partial<ProductValues> = diff(props.initialValues, values);
       const payload = {

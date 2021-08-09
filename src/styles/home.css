@@ -210,12 +210,12 @@ a {
 .log-user{
     color: #fff;
 }
-.MuiPaper-root{
+/* .MuiPaper-root{
     position: fixed;
     top: 22% !important;
     right: 1% !important;
     left: auto !important;
-}
+} */
 .menu-product {
     color: #000;
 }

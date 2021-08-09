@@ -25,3 +25,12 @@
 .btnForm {
   margin-top: 10px;
 }
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.filter {
+  width: 15%;
+}

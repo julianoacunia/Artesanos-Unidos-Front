@@ -20,6 +20,7 @@ const CheckAuthHOC = (
 
     const { authenticated, user, history, match, logout } = props;
     const checkTokenAndCategory = useCallback(() => {
+      console.log("user", user)
       if (!authenticated) {
         logout();
         history.push('/');
@@ -29,7 +30,7 @@ const CheckAuthHOC = (
       //   history.push('/');
       // }
       else if (user && user.category === 'admin') {
-        history.push('/admin');
+        history.push('/admin/products');
       } else if (user && user.category === 'client') {
         history.push('/');
       }

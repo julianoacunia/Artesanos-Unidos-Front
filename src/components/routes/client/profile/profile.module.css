@@ -1,0 +1,65 @@
+.rowProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(236, 241, 229);
+  width: 100%;
+  height: 500px;
+}
+.titleProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+.accordionNameLastName {
+  display: flex;
+  flex-direction:column ;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+.accordionEmailPassword {
+  display: flex;
+  flex-direction:column ;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 50px;
+}
+.styleAccordion {
+  width: 60% !important;
+}
+.optionNameLastName {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 5px;
+}
+.nameTextField {
+  margin: 5px !important;
+}
+.lastNameTextField {
+  margin: 5px !important;
+}
+.emailTextField {
+  width: 400px !important;
+}
+.personalData {
+  font-size: 20px;
+  margin:0px;
+}
+.accountData {
+  font-size: 20px;
+  margin: 0px;
+}
+.passwordAccordion {
+  display: flex;
+  flex-direction: column;
+}
+.optionButtonPassword {
+  display: flex;
+  justify-content: flex-end;
+  width: 600px;
+}

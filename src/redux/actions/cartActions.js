@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, MERCADOPAGO_SUCCESS, MERCADOPAGO_PENDING, MERCADOPAGO_ERROR } from './types'
+import { ADD_TO_CART, REMOVE_FROM_CART, MERCADOPAGO_SUCCESS, MERCADOPAGO_PENDING, MERCADOPAGO_ERROR, REMOVE_ALL_FROM_CART } from './types'
 
 // ADD TO CART METHOD
 export const addToCart = (items, product) => dispatch => {
@@ -64,6 +64,17 @@ export const removeFromCart = (items, product) => dispatch => {
   localStorage.setItem('cartItems', JSON.stringify(cartItems))
   return dispatch({
     type: REMOVE_FROM_CART,
+    payload: {
+      cartItems
+    }
+  })
+}
+
+export const removeAllFromCart = (items) => dispatch => {
+  const cartItems = items;
+  localStorage.setItem('cartItems', JSON.stringify(cartItems))
+  return dispatch({
+    type: REMOVE_ALL_FROM_CART,
     payload: {
       cartItems
     }

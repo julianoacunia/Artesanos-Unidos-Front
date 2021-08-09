@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PersonOutlineSharpIcon from '@material-ui/icons/PersonOutlineSharp'
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { ReduxProps } from './';
 import css from './public.module.css';
 import { useHistory } from 'react-router-dom';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
+import Button from '@material-ui/core/Button'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 export interface Props extends ReduxProps {
   children: React.ReactNode;
@@ -20,6 +24,7 @@ const Public: React.FC<Props> = (props) => {
     children,
     isAuth,
     user,
+    logOut,
   } = props;
 
   const StyledBadge = withStyles((theme) => ({
@@ -31,8 +36,24 @@ const Public: React.FC<Props> = (props) => {
     },
   }))(Badge);
 
-  const history = useHistory();
+  const useStyles = makeStyles({
+    root: {
+      top: 150,
+    }
+  });
 
+  const history = useHistory();
+  const [anchorEl, setAnchorEl] = useState(false);
+
+  const handleOpen = () => {
+    setAnchorEl(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(false);
+  };
+
+  const classes = useStyles();
   return (
     <>
       <div className={css.container}>
@@ -68,8 +89,21 @@ const Public: React.FC<Props> = (props) => {
               </button>
             </div>
             {isAuth ?
-              <div className={css.logged}>
-                {`${user.name} ${user.lastName}`}
+              <div className={css.loggedOptions}>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpen}>
+                  <AccountCircleOutlinedIcon className={css.logUser} />
+                </Button>
+                <div className={css.userOptions}>
+                  <Menu
+                    keepMounted
+                    open={anchorEl}
+                    onClose={handleClose}
+                  >
+                    <MenuItem><Link className={css.menuMyProfile} to='/profile'>Mi Perfil</Link></MenuItem>
+                    <MenuItem><Link className={css.menuProduct} to='/my-orders'>Mis Compras</Link></MenuItem>
+                    <MenuItem><Link className={css.menuLogout} to='/login' onClick={logOut}>Logout</Link></MenuItem>
+                  </Menu>
+                </div>
               </div>
               :
               <div className={css.loginMenu}>
