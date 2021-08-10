@@ -27,6 +27,7 @@ const cols: any[] = [
     title: 'Total',
     field: 'total',
     cellStyle: ellipsisStyles,
+    render: (rowData: any) => `$${rowData.total}`
   },
   {
     title: 'Fecha',

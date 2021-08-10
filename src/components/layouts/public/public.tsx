@@ -43,14 +43,14 @@ const Public: React.FC<Props> = (props) => {
   });
 
   const history = useHistory();
-  const [anchorEl, setAnchorEl] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleOpen = () => {
-    setAnchorEl(true);
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setAnchorEl(false);
+    setAnchorEl(null);
   };
 
   const classes = useStyles();
@@ -93,17 +93,16 @@ const Public: React.FC<Props> = (props) => {
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpen}>
                   <AccountCircleOutlinedIcon className={css.logUser} />
                 </Button>
-                <div className={css.userOptions}>
-                  <Menu
-                    keepMounted
-                    open={anchorEl}
-                    onClose={handleClose}
-                  >
-                    <MenuItem><Link className={css.menuMyProfile} to='/profile'>Mi Perfil</Link></MenuItem>
-                    <MenuItem><Link className={css.menuProduct} to='/my-orders'>Mis Compras</Link></MenuItem>
-                    <MenuItem><Link className={css.menuLogout} to='/login' onClick={logOut}>Logout</Link></MenuItem>
-                  </Menu>
-                </div>
+                <Menu
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem><Link className={css.menuMyProfile} to='/profile'>Mi Perfil</Link></MenuItem>
+                  <MenuItem><Link className={css.menuProduct} to='/my-orders'>Mis Compras</Link></MenuItem>
+                  <MenuItem><Link className={css.menuLogout} to='/login' onClick={logOut}>Logout</Link></MenuItem>
+                </Menu>
               </div>
               :
               <div className={css.loginMenu}>

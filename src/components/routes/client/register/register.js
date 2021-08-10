@@ -26,9 +26,9 @@ class register extends Component {
   render() {
     return (
       <>
-        <SuccessPopUp isModalOpen={this.state.isModalOpen} redirect={() =>
+        {/* <SuccessPopUp isModalOpen={this.state.isModalOpen} redirect={() =>
           this.props.history.push('/login')
-        } />
+        } /> */}
         <div className={css.mainRegister}>
           <div className={css.registerContainer}>
             <div className={css.titleRegister}>
@@ -40,7 +40,8 @@ class register extends Component {
                 onSubmit={values => {
                   this.props.postUser(values).then(res => {
                     if (res.type === 'ADD_USER_SUCCESS') {
-                      this.setModalIsOpen()
+                      // this.setModalIsOpen()
+                      this.props.history.push('/login')
                     }
                   })
                 }}

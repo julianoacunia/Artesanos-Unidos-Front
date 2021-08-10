@@ -251,11 +251,6 @@ a {
   border: none;
 }
 
-.userOptions {
-  position: fixed !important;
-  top: 20px !important;
-}
-
 .loggedOptions {
   display: flex;
   align-items: center;

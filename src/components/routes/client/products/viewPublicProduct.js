@@ -8,8 +8,8 @@ import { setProductCategory } from '../../../../redux/actions/productActions'
 import css from './products.module.css';
 import Filter from './filterProducts';
 
-const renderProduct = () => <div className={css.rowProduct}><Product /></div>;
-const renderFilter = () => <div><Filter /></div>;
+const renderProduct = () => <div className={css.containerProduct}><Product /></div>;
+const renderFilter = () => <div className={css.containerFilter}><Filter /></div>;
 
 const renderComponents = () => {
   return (

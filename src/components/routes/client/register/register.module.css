@@ -21,7 +21,7 @@
   align-items: center;
   font-size: 40px;
 }
-#inputUser {
+#inputUser, #inputDni {
   margin: 5px;
   width: 125px;
   height: 30px;

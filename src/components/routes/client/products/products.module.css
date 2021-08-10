@@ -15,11 +15,12 @@
   width: 15%;
 }
 
-.product{
+.containerProduct{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 85%;
+  width:100%;
+  margin-top: 20px;
 }
 
 .btnForm {
@@ -33,4 +34,17 @@
 
 .filter {
   width: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.containerFilter {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.product {
+  width: 100%;
 }

@@ -10,6 +10,7 @@ import Order from './order';
 import MyOrders from './my-orders';
 import OrderDetail from './order-details';
 import Profile from './profile/viewProfile';
+import ForgotPassword from './forgot-password';
 
 const ClientRoutes: React.FC = () => {
   const location = useLocation();
@@ -25,6 +26,7 @@ const ClientRoutes: React.FC = () => {
         <Route exact={true} path='/my-orders' component={MyOrders} />
         <Route exact={true} path='/order-detail/:id' component={OrderDetail} />
         <Route exact={true} path='/profile' component={Profile} />
+        <Route exact={true} path='/forgot-password' component={ForgotPassword} />
         <Redirect to="/" />
       </Switch>
     </PublicLayout>

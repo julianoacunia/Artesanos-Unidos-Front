@@ -33,13 +33,13 @@ const ProviderLayout: React.FC<ReduxProps> = (props) => {
         >
           Ventas
       </button>
-        <button
+        {/* <button
           onClick={() => history.push('/profile/my-order')}
           disabled={location.pathname === '/profile/my-order'}
           className={css.routes}
         >
           Categorías
-      </button>
+      </button> */}
         <button
           onClick={logOut}
           className={css.routes}

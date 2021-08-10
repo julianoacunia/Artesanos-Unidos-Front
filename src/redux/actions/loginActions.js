@@ -7,7 +7,10 @@ import {
   FETCH_USERS,
   ADD_USER_PENDING,
   ADD_USER_SUCCESS,
-  ADD_USER_ERROR
+  ADD_USER_ERROR,
+  FORGOT_PASSWORD_FETCHING,
+  FORGOT_PASSWORD_REJECTED,
+  FORGOT_PASSWORD_FULFILLED,
 } from './types'
 import axios from 'axios';
 
@@ -112,4 +115,35 @@ export const auth = () => {
     type: IS_AUTH,
     payload: request,
   };
+}
+
+export const forgotPassword = data => {
+  return dispatch => {
+    dispatch({
+      type: FORGOT_PASSWORD_FETCHING,
+    })
+    const options = {
+      timeout: 25000,
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+    return fetch('http://localhost:5000/api/users/forgot-password', options)
+      .then(res => res.json())
+      .then(res => {
+        if (res.msg !== 'Invalid Email or password') {
+          return dispatch({
+            type: FORGOT_PASSWORD_FULFILLED,
+            payload: res
+          })
+        } else {
+          return dispatch({
+            type: FORGOT_PASSWORD_REJECTED,
+            payload: res.error
+          })
+        }
+      })
+  }
 }

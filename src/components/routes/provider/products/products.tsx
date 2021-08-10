@@ -33,9 +33,10 @@ const cols: any[] = [
     cellStyle: ellipsisStyles,
   },
   {
-    title: 'Stock',
-    field: 'stock',
+    title: 'Precio',
+    field: 'price',
     cellStyle: ellipsisStyles,
+    render: (rowData: any) => `$${rowData.price}`
   },
 ];
 

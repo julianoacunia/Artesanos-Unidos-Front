@@ -77,6 +77,7 @@ class login extends Component {
                     Iniciar
                   </button>
                 )}
+                <button onClick={() => this.props.history.push('/forgot-password')}>Olvide mi contraseña</button>
               </div>
             </Form>
           )}
